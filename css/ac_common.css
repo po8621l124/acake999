@@ -309,8 +309,8 @@ figure [class^="anima_"]{transition: filter 1.1s ease .3s, opacity 1.1s ease .3s
 .ac_fab_av{animation: ac_wave 1.4s var(--ease) 2.5s 1 both;}
 @keyframes ac_wave{0%, 100%{transform: rotate(0);}15%{transform: rotate(-16deg);}30%{transform: rotate(12deg);}45%{transform: rotate(-10deg);}60%{transform: rotate(6deg);}}
 /* 聯絡小卡 */
-.ac_fab_card{width: min(310px, calc(100vw - 28px));padding: 20px 16px 16px;border-radius: 26px;background: #fff;box-shadow: 0 24px 50px -22px rgba(var(--rgb_cocoa),.55);transform-origin: bottom right;opacity: 0;visibility: hidden;transform: translateY(10px) scale(.92);transition: opacity .3s, transform .45s var(--ease), visibility 0s .45s;}
-.ac_fab.is-open .ac_fab_card{opacity: 1;visibility: visible;transform: none;transition: opacity .3s, transform .45s var(--ease), visibility 0s;}
+.ac_fab_card{width: min(310px, calc(100vw - 28px));padding: 20px 16px 16px;border-radius: 26px;background: #fff;box-shadow: 0 24px 50px -22px rgba(var(--rgb_cocoa),.55);transform-origin: bottom right;opacity: 0;visibility: hidden;transform: translateY(10px) scale(.92);transition: opacity .3s, transform .45s var(--ease), visibility 0s .45s;pointer-events: none;}
+.ac_fab.is-open .ac_fab_card{opacity: 1;visibility: visible;transform: none;transition: opacity .3s, transform .45s var(--ease), visibility 0s;pointer-events: unset;}
 .ac_fab_t{display: flex;flex-direction: column;gap: 2px;padding: 0 6px 14px;}
 .ac_fab_t b{font-family: var(--Kaifont);font-weight: 700;font-size: 19px;letter-spacing: .08em;color: var(--colorText);}
 .ac_fab_t span{font-size: 13px;line-height: 1.6;letter-spacing: .04em;color: var(--colorText-sub);}
