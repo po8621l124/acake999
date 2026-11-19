@@ -1,4 +1,4 @@
-/* A. CAKE 共通互動：header、輪播、標題斷行；私訊清單、商品抽屜、市集日期 */
+/* A. CAKE 共通互動：header、浮動聯絡鈕、輪播、標題斷行；私訊清單、商品抽屜、市集日期 */
 (function () {
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var body = document.body;
@@ -56,6 +56,23 @@
         window.addEventListener('pointerup', function () { if (!down) return; down = false; setTimeout(function () { track.classList.remove('is-drag'); }, 0); });
         track.addEventListener('dragstart', function (e) { e.preventDefault(); });
     });
+
+    /* ---------- 浮動聯絡按鈕：點開小卡，點外面或 Esc 收起 ---------- */
+    (function () {
+        var fab = document.querySelector('.ac_fab'); if (!fab) return;
+        var btn = fab.querySelector('.ac_fab_btn'), card = fab.querySelector('.ac_fab_card');
+        card.inert = true;
+        function set(open) {
+            fab.classList.toggle('is-open', open);
+            btn.setAttribute('aria-expanded', open);
+            card.inert = !open;
+            if (open) { var a = card.querySelector('a'); if (a) setTimeout(function () { a.focus({ preventScroll: true }); }, 150); }
+        }
+        btn.addEventListener('click', function () { set(!fab.classList.contains('is-open')); });
+        document.addEventListener('click', function (e) { if (fab.classList.contains('is-open') && !fab.contains(e.target)) set(false); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && fab.classList.contains('is-open')) { set(false); btn.focus(); } });
+        [].forEach.call(card.querySelectorAll('a'), function (a) { a.addEventListener('click', function () { set(false); }); });
+    })();
 
     /* ---------- 標題斷行：依「｜」分段，每段不從中間斷開 ---------- */
     window.acSegment = function (el) {

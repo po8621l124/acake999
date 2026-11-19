@@ -63,7 +63,21 @@
         '</header>' +
         '<nav class="ac_dock" aria-label="快速選單"><ul>' + dockLinks +
             '<li><button type="button" data-bag aria-haspopup="dialog" aria-label="私訊清單">' + chatIcon + '<span>清單</span><b aria-hidden="true">0</b></button></li>' +
-        '</ul></nav>';
+        '</ul></nav>' +
+        /* 浮動聯絡按鈕：「問 A娜」→ 小卡列出 IG／LINE／FB */
+        '<div class="ac_fab">' +
+            '<div class="ac_fab_card" id="ac_fab_card" role="dialog" aria-label="聯絡 A娜">' +
+                '<p class="ac_fab_t"><b>有問題，問 A娜</b><span>口味、數量、取貨、客製點心都可以私訊討論</span></p>' +
+                '<ul>' +
+                    '<li><a href="' + IG + '" target="_blank" rel="noopener"><i>' + igIcon + '</i><span><b>Instagram 私訊</b><small>@acake999</small></span></a></li>' +
+                    '<li><a href="' + LINE + '" target="_blank" rel="noopener"><i>' + lineIcon + '</i><span><b>LINE 官方帳號</b><small>@yzg4109n</small></span></a></li>' +
+                    '<li><a href="' + FB + '" target="_blank" rel="noopener"><i>' + fbIcon + '</i><span><b>Facebook 粉專</b><small>A. cake</small></span></a></li>' +
+                '</ul>' +
+            '</div>' +
+            '<button class="ac_fab_btn" type="button" aria-expanded="false" aria-controls="ac_fab_card" aria-label="聯絡 A娜：Instagram、LINE、Facebook">' +
+                '<span class="ac_fab_av" aria-hidden="true"><b>A.</b>' + closeIcon + '</span><em>問 A娜</em>' +
+            '</button>' +
+        '</div>';
 
     var footArw = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
     var FOOTER =
