@@ -1,4 +1,6 @@
+# 內部預覽版：先不讓搜尋引擎收錄。正式上線時改回：
+#   User-agent: *
+#   Allow: /
+#   Sitemap: https://po8621l124.github.io/acake999/sitemap.xml
 User-agent: *
-Allow: /
-
-Sitemap: https://po8621l124.github.io/acake999/sitemap.xml
+Disallow: /
