@@ -1,0 +1,38 @@
+name: 整理商品照片與頁面
+
+on:
+  push:
+    branches: [main]
+    paths: ['data/**', 'image/acake/**', 'html/**', '.github/scripts/**']
+  schedule:
+    - cron: '5 16 * * *'   # 每天台灣時間 00:05 重跑，讓「即將出攤／走過的市集」跟著日期更新
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: images
+  cancel-in-progress: false
+
+jobs:
+  images:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pillow
+      - run: python .github/scripts/process_images.py
+      - run: python .github/scripts/render.py
+        env:
+          TZ: Asia/Taipei
+      - name: Commit
+        run: |
+          git add -A data image html
+          git diff --cached --quiet && exit 0
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m '自動整理商品照片與頁面（webp、縮圖、尺寸、HTML）'
+          git push

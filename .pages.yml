@@ -1,0 +1,154 @@
+# Pages CMS 後台設定（https://app.pagescms.org 用 GitHub 帳號登入）
+# 上傳照片後，.github/workflows/images.yml 會自動轉 webp、產生 480/960 縮圖、填好 width/height，並把商品與出攤日程寫進 HTML。
+
+media:
+  input: image/acake
+  output: /image/acake
+  extensions: [jpg, jpeg, png, webp]
+
+content:
+  - name: products
+    label: 商品
+    type: file
+    path: data/products.json
+    format: json
+    fields:
+      - name: _說明
+        type: text
+        hidden: true
+      - name: order_url
+        label: 7-11 賣貨便網址
+        type: string
+      - name: categories
+        label: 分類（改這裡要同步改下面商品的分類選項，請找工程師）
+        type: object
+        list: true
+        readonly: true
+        fields:
+          - { name: id, type: string }
+          - { name: name, type: string }
+          - { name: en, type: string }
+      - name: flavors
+        label: 司康口味菜單（順序＝菜單順序）
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.group}｜{fields.name}"
+        fields:
+          - name: name
+            label: 口味名稱
+            type: string
+            required: true
+          - name: group
+            label: 分組
+            type: select
+            required: true
+            options:
+              values: [經典, 果香, 可可・堅果, 茶香, 花捲]
+      - name: products
+        label: 商品列表（順序＝網站上的順序）
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.name}"
+        fields:
+          - name: id
+            label: 商品代碼（英文小寫、不可重複，建立後不要改）
+            type: string
+            required: true
+          - name: name
+            label: 商品名稱
+            type: string
+            required: true
+          - name: en
+            label: 英文名稱
+            type: string
+          - name: category
+            label: 分類
+            type: select
+            required: true
+            options:
+              values:
+                - { name: scone, label: 經典司康 }
+                - { name: special, label: 厚片・夾心 }
+                - { name: limited, label: 季節限定 }
+                - { name: dessert, label: 甜點 }
+                - { name: pantry, label: 果醬・橙品 }
+                - { name: gift, label: 節慶禮盒 }
+          - name: status
+            label: 供應狀態
+            type: select
+            required: true
+            options:
+              values:
+                - { name: regular, label: 常態供應 }
+                - { name: seasonal, label: 季節限定 }
+                - { name: ended, label: 本季已結束 }
+          - name: featured
+            label: 放到首頁「招牌選品」
+            type: boolean
+          - name: myship
+            label: 7-11 賣貨便有上架（可直接下單）
+            type: boolean
+            description: 沒勾的商品會標示「需私訊預訂」
+          - name: price
+            label: 價格文字
+            type: string
+            description: 例如「NT$ 70 起」「NT$ 135」，空白會顯示「價格請私訊」
+          - name: summary
+            label: 一句話介紹（卡片上）
+            type: string
+          - name: desc
+            label: 完整介紹
+            type: text
+            description: 空一行就是分段
+          - name: specs
+            label: 規格
+            type: object
+            list: true
+            fields:
+              - { name: name, label: 項目, type: string, description: 例如 規格、保存、取貨 }
+              - { name: value, label: 內容, type: string }
+          - name: instagram
+            label: IG 貼文代碼
+            type: string
+            description: 貼文網址 instagram.com/p/ 後面那串，例如 DUIUbvVETm8
+          - name: images
+            label: 照片（第一張是封面，建議正方形或直式 4:5）
+            type: object
+            list: true
+            fields:
+              - name: src
+                label: 照片
+                type: image
+                required: true
+                description: jpg / png / webp 都可以，存檔後約 1～2 分鐘系統會自動處理成網站用的尺寸
+              - { name: width, type: number, hidden: true }
+              - { name: height, type: number, hidden: true }
+
+  - name: markets
+    label: 出攤日程
+    type: file
+    path: data/markets.json
+    format: json
+    fields:
+      - name: _說明
+        type: text
+        hidden: true
+      - name: markets
+        label: 市集（不用排序，網站會依日期自動排，過期的自動移到「走過的市集」）
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{fields.start}｜{fields.name}"
+        fields:
+          - { name: name, label: 市集名稱, type: string, required: true }
+          - { name: city, label: 城市, type: string, required: true, description: 例如 臺中、臺南 }
+          - { name: place, label: 地點, type: string }
+          - { name: start, label: 開始日期, type: date, required: true, options: { format: yyyy-MM-dd } }
+          - { name: end, label: 結束日期（單日可空白）, type: date, options: { format: yyyy-MM-dd } }
+          - { name: hours, label: 時間, type: string, description: 例如 12:00–18:00 }
+          - { name: note, label: 備註, type: string, description: 例如 免費入場、主題、限定口味 }

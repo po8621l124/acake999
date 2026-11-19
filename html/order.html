@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>訂購方式｜7-11 冷凍店到店・台中大里自取・市集預留｜A. cake 司康</title>
+	<!-- Google Analytics（GA4）：拿到評估 ID 後再加上 -->
+	<link rel="preload" as="image" href="../image/acake/p_box.webp" media="(min-width: 769px)" fetchpriority="high">
+	<link rel="preload" as="image" href="../image/acake/960/p_box.webp" media="(max-width: 768px)" fetchpriority="high">
+	<link rel="icon" href="../image/icon/icon-48.png" sizes="48x48" type="image/png">
+	<link rel="icon" href="../image/icon/icon-96.png" sizes="96x96" type="image/png">
+	<link rel="icon" href="../image/icon/icon-192.png" sizes="192x192" type="image/png">
+	<link rel="apple-touch-icon" href="../image/icon/icon-180.png">
+	<meta name="description" content="A. cake 司康訂購方式：7-11 賣貨便冷凍店到店、台中大里工作室預約自取、市集現場預留。接單後製作，約 5 個工作天出貨。">
+	<link rel="canonical" href="https://po8621l124.github.io/acake999/html/order.html">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="A. cake ‘ scones">
+	<meta property="og:locale" content="zh_TW">
+	<meta property="og:title" content="訂購方式｜A. cake 台中司康">
+	<meta property="og:description" content="7-11 冷凍店到店、台中大里自取、市集預留。接單後製作，約 5 個工作天出貨。">
+	<meta property="og:url" content="https://po8621l124.github.io/acake999/html/order.html">
+	<meta property="og:image" content="https://po8621l124.github.io/acake999/image/acake/og.jpg">
+	<meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=LXGW+WenKai+TC:wght@400;700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=LXGW+WenKai+TC:wght@400;700&display=swap"></noscript>
+    <link rel="stylesheet" href="../css/ac_common.css">
+<style>
+/* ===== 訂購方式 aco_ ===== */
+
+/* b 四種取貨方式 */
+.aco_b{padding: calc(var(--pdy) * 1.1) var(--pdx) var(--pdy);}
+.aco_b01{max-width: 1400px;margin: auto;}
+.aco_b02{display: grid;grid-template-columns: repeat(4, 1fr);gap: 18px;margin-top: 46px;}
+.aco_b02 > li{display: flex;flex-direction: column;align-items: flex-start;gap: 6px;padding: 30px 26px;border-radius: 28px;background: var(--color-bg2);}
+.aco_b02 > li:first-child{background: var(--color-Main);}
+.hs_box .aco_b02 > li:first-child :is(h3, p, li, em){color: var(--colorText-whi);}
+.aco_b02 > li:first-child ul li::before{background: var(--color-butter);}
+.hs_box .aco_b02 em{font-family: var(--Fraufont);font-weight: 600;font-size: 13px;letter-spacing: .12em;text-transform: uppercase;color: var(--color-Main);}
+.hs_box .aco_b02 h3{font-family: var(--Kaifont);font-weight: 700;font-size: var(--f24);letter-spacing: .08em;line-height: 1.5;}
+.aco_b02 ul{display: flex;flex-direction: column;gap: 4px;margin: 8px 0 18px;}
+.hs_box .aco_b02 ul li{position: relative;padding-left: 18px;font-size: var(--f15);line-height: 1.8;}
+.aco_b02 ul li::before{content: '';position: absolute;left: 2px;top: .72em;width: 7px;height: 7px;border-radius: 50%;background: var(--color-Main);}
+.aco_b02 > li .ac_btn{margin-top: auto;}
+
+/* c 訂購須知 */
+.aco_c{padding: var(--pdy) var(--pdx);background: var(--color-bg2);border-radius: 48px;margin: 0 clamp(0px, 1.5vw, 24px);}
+.aco_c01{max-width: 1400px;margin: auto;display: grid;grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);gap: 40px clamp(40px, 6vw, 110px);align-items: start;}
+.aco_qa{display: flex;flex-direction: column;gap: 10px;}
+.aco_qa details{border-radius: 22px;background: #fff;}
+.aco_qa summary{display: flex;justify-content: space-between;align-items: center;gap: 20px;padding: 20px 22px 20px 26px;cursor: pointer;list-style: none;}
+.aco_qa summary::-webkit-details-marker{display: none;}
+.hs_box .aco_qa summary span{font-family: var(--Kaifont);font-weight: 700;font-size: var(--f18);letter-spacing: .08em;}
+.aco_qa summary i{position: relative;flex: none;width: 34px;height: 34px;border-radius: 50%;background: var(--color-bg2);transition: background-color .3s, transform .5s var(--ease);}
+.aco_qa summary i::before, .aco_qa summary i::after{content: '';position: absolute;left: 50%;top: 50%;width: 12px;height: 2px;border-radius: 2px;background: var(--colorText);transform: translate(-50%, -50%);transition: transform .5s var(--ease), background-color .3s;}
+.aco_qa summary i::after{transform: translate(-50%, -50%) rotate(90deg);}
+.aco_qa details[open] summary i{background: var(--color-Main);transform: rotate(180deg);}
+.aco_qa details[open] summary i::before, .aco_qa details[open] summary i::after{background: #fff;}
+.aco_qa details[open] summary i::after{transform: translate(-50%, -50%) rotate(0deg);}
+.aco_qa_a{padding: 0 70px 22px 26px;}
+.hs_box .aco_qa_a p{color: var(--colorText-sub);}
+
+/* d 私訊小幫手：一步一步引導（進度列＋單一步驟面板＋右側摘要） */
+.aco_d{padding: calc(var(--pdy) * 1.1) var(--pdx) calc(var(--pdy) * 1.1);scroll-margin-top: 20px;}
+.aco_d01{max-width: 1200px;margin: auto;}
+.aco_d01_head{display: flex;justify-content: space-between;align-items: flex-end;gap: 24px;flex-wrap: wrap;margin-bottom: 30px;}
+.hs_box .aco_d01_head > p{max-width: 520px;color: var(--colorText-sub);}
+/* 進度列 */
+.aco_steps{display: grid;grid-template-columns: repeat(4, 1fr);gap: 8px;margin-bottom: 18px;counter-reset: none;}
+.aco_steps button{position: relative;display: flex;align-items: center;gap: 10px;width: 100%;padding: 12px 16px;border-radius: 40px;background: var(--color-bg2);cursor: pointer;text-align: left;transition: background-color .3s;}
+.aco_steps button:disabled{cursor: default;opacity: .55;}
+.hs_box .aco_steps i{flex: none;display: grid;place-items: center;width: 30px;height: 30px;border-radius: 50%;background: #fff;font-family: var(--Fraufont);font-weight: 700;font-size: 14px;color: var(--colorText);}
+.hs_box .aco_steps span{font-family: var(--Kaifont);font-weight: 700;font-size: var(--f15);letter-spacing: .08em;white-space: nowrap;}
+.aco_steps button.is-done i{background: var(--color-butter);font-size: 0;}
+.aco_steps button.is-done i::before{content: '';width: 10px;height: 6px;margin-top: -3px;border-left: 2px solid var(--colorText);border-bottom: 2px solid var(--colorText);transform: rotate(-45deg);}
+.aco_steps button[aria-current="step"]{background: var(--color-Main);opacity: 1;}
+.hs_box .aco_steps button[aria-current="step"] span{color: #fff;}
+.hs_box .aco_steps button[aria-current="step"] i{color: var(--color-Main);}
+.aco_d02{display: grid;grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);gap: 24px;align-items: start;}
+/* 面板 */
+.aco_form{display: flex;flex-direction: column;padding: clamp(22px, 3vw, 36px);border-radius: 30px;background: var(--color-bg2);}
+.aco_panel{min-width: 0;}
+.aco_panel_h{display: flex;flex-direction: column;gap: 2px;margin-bottom: 20px;}
+.hs_box .aco_panel_h b{font-family: var(--Kaifont);font-weight: 700;font-size: var(--f26);letter-spacing: .08em;line-height: 1.5;}
+.hs_box .aco_panel_h span{font-size: var(--f14);color: var(--colorText-sub);}
+.aco_panel[data-step]:not([hidden]){animation: aco_in .45s var(--ease);}
+@keyframes aco_in{from{opacity: 0;transform: translateX(14px);}}
+/* 品項 */
+.aco_items{display: flex;flex-direction: column;gap: 8px;}
+.aco_items li{display: grid;grid-template-columns: 54px minmax(0, 1fr) auto auto;gap: 14px;align-items: center;padding: 8px 14px 8px 8px;border-radius: 18px;background: #fff;}
+.aco_items img{width: 54px;height: 54px;border-radius: 12px;object-fit: cover;background: var(--color-bg2);}
+.hs_box .aco_items b{display: block;font-family: var(--Kaifont);font-weight: 700;font-size: var(--f16);letter-spacing: .06em;line-height: 1.5;}
+.hs_box .aco_items small{font-size: 13px;color: var(--colorText-sub);}
+.aco_items_empty{padding: 26px 22px;border-radius: 20px;background: #fff;text-align: center;}
+.hs_box .aco_items_empty p{color: var(--colorText-sub);margin-bottom: 14px;}
+.aco_empty_btns{display: flex;flex-wrap: wrap;justify-content: center;gap: 10px;}
+.aco_flvbox{margin-top: 14px;border-radius: 20px;background: rgba(255,255,255,.6);}
+.aco_flvbox summary{display: flex;align-items: baseline;flex-wrap: wrap;gap: 4px 12px;padding: 16px 20px;cursor: pointer;list-style: none;}
+.aco_flvbox summary::-webkit-details-marker{display: none;}
+.hs_box .aco_flvbox summary span{font-family: var(--Kaifont);font-weight: 700;font-size: var(--f16);letter-spacing: .08em;color: var(--color-Main);}
+.hs_box .aco_flvbox summary small{font-size: 13px;color: var(--colorText-sub);}
+.aco_flvbox[open] summary span::first-letter{color: transparent;}
+.aco_flv{padding: 0 20px 18px;display: flex;flex-direction: column;gap: 14px;}
+.hs_box .aco_flv h4{font-family: var(--Kaifont);font-weight: 700;font-size: var(--f14);letter-spacing: .12em;color: var(--colorText-sub);margin-bottom: 6px;}
+.aco_flv_g{display: flex;flex-wrap: wrap;gap: 6px;}
+.aco_more{display: flex;gap: 10px;margin-top: 12px;}
+.aco_more select{flex: 1;min-width: 0;}
+.aco_clear_row{display: flex;justify-content: flex-end;margin-top: 10px;}
+.hs_box .aco_clear{background: none;cursor: pointer;font-size: 13px;letter-spacing: .06em;color: var(--colorText-sub);text-decoration: underline;text-underline-offset: 3px;}
+.hs_box .aco_clear.is-confirm{color: var(--color-Main);font-weight: 700;}
+/* 表單元件 */
+.aco_d select, .aco_d input[type="text"], .aco_d input[type="tel"], .aco_d input[type="date"], .aco_d textarea{width: 100%;padding: 13px 18px;border: 1.5px solid transparent !important;border-radius: 16px;background: #fff;font-family: var(--Sansfont);font-size: 16px;letter-spacing: .04em;color: var(--colorText);transition: border-color .3s;}
+.aco_d :is(select, input, textarea):focus{border-color: var(--color-Main) !important;outline: none;}
+.aco_d input.is-bad{border-color: var(--color-Main) !important;background: #FFF3EE;}
+.aco_d textarea{resize: vertical;line-height: 1.7;}
+.aco_pick{display: grid;grid-template-columns: repeat(3, 1fr);gap: 10px;}
+.aco_pick label{position: relative;display: flex;flex-direction: column;gap: 2px;padding: 16px 16px 16px 46px;border-radius: 18px;background: #fff;border: 2px solid transparent !important;cursor: pointer;transition: border-color .3s;}
+.aco_pick input{position: absolute;left: 16px;top: 19px;width: 20px;height: 20px;accent-color: var(--color-Main);}
+.aco_pick label:has(input:checked){border-color: var(--color-Main) !important;}
+.aco_pick label:has(input:disabled){opacity: .45;cursor: not-allowed;}
+.hs_box .aco_pick b{font-family: var(--Kaifont);font-weight: 700;font-size: var(--f16);letter-spacing: .06em;}
+.hs_box .aco_pick span{font-size: 13px;color: var(--colorText-sub);line-height: 1.6;}
+.aco_sub{margin-top: 16px;display: grid;gap: 8px;}
+.aco_sub[hidden]{display: none;}
+.hs_box .aco_note{margin-bottom: 16px;padding: 12px 16px;border-radius: 14px;background: #fff;font-size: var(--f14);line-height: 1.8;}
+.hs_box .aco_note.is-shop{background: #E3EFD9;}
+.hs_box .aco_note b{font-size: inherit;font-weight: 700;}
+.hs_box .aco_note a{color: var(--color-Main);text-decoration: underline;text-underline-offset: 3px;}
+.hs_box .aco_hint{font-size: 13px;color: var(--colorText-sub);}
+.aco_field{display: flex;flex-direction: column;gap: 6px;}
+.hs_box .aco_field > span{font-size: var(--f14);letter-spacing: .06em;color: var(--colorText-sub);}
+.hs_box .aco_field em{display: inline-block;margin-left: 4px;padding: 0 7px;border-radius: 10px;background: var(--color-Main);font-style: normal;font-size: 11px;line-height: 1.7;color: #fff;}
+.aco_two{display: grid;grid-template-columns: 1fr 1fr;gap: 12px;}
+.aco_note_f{margin-top: 16px;}
+.hs_box .aco_err{margin-top: 12px;padding: 10px 14px;border-radius: 12px;background: #FFF3EE;font-size: var(--f14);color: var(--color-Main2);}
+/* 步驟 4：收據＋傳送 */
+.aco_receipt{position: relative;padding: 26px clamp(20px, 3vw, 30px) 24px;background: #fff;
+    -webkit-mask: radial-gradient(circle 8px at 50% 0, transparent 98%, #000) 0 0 / 22px 51% repeat-x, radial-gradient(circle 8px at 50% 100%, transparent 98%, #000) 0 100% / 22px 51% repeat-x;
+    mask: radial-gradient(circle 8px at 50% 0, transparent 98%, #000) 0 0 / 22px 51% repeat-x, radial-gradient(circle 8px at 50% 100%, transparent 98%, #000) 0 100% / 22px 51% repeat-x;}
+.aco_receipt_h{display: flex;align-items: baseline;justify-content: space-between;padding-bottom: 12px;margin-bottom: 14px;border-bottom: 2px dashed var(--color-line) !important;}
+.hs_box .aco_receipt_h b{font-family: var(--Cavfont);font-weight: 700;font-size: 34px;line-height: 1;color: var(--color-alt);}
+.hs_box .aco_receipt_h span{font-family: var(--Kaifont);font-weight: 700;font-size: var(--f15);letter-spacing: .15em;}
+.hs_box .aco_pre{max-height: 46vh;overflow-y: auto;font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, var(--Sansfont);font-size: var(--f15);line-height: 1.9;letter-spacing: .02em;color: var(--colorText);white-space: pre-wrap;word-break: break-word;scrollbar-width: thin;}
+.aco_howto{counter-reset: ht;display: flex;flex-direction: column;gap: 6px;margin: 22px 0 18px;}
+.hs_box .aco_howto li{counter-increment: ht;display: flex;gap: 10px;font-size: var(--f14);line-height: 1.8;}
+.hs_box .aco_howto li::before{content: counter(ht);flex: none;width: 22px;height: 22px;margin-top: 3px;border-radius: 50%;background: var(--color-butter);font-family: var(--Fraufont);font-weight: 700;font-size: 12px;line-height: 22px;text-align: center;}
+.aco_send_btns{display: grid;grid-template-columns: 1fr 1fr;gap: 10px;align-items: center;}
+.aco_send_btns .ac_btn{justify-content: space-between;}
+.hs_box .aco_copy{grid-column: 1 / -1;justify-self: center;background: none;cursor: pointer;font-size: var(--f14);letter-spacing: .06em;color: var(--colorText-sub);text-decoration: underline;text-underline-offset: 3px;}
+.hs_box .aco_done{margin-top: 14px;padding: 12px 16px;border-radius: 14px;background: #E3EFD9;font-size: var(--f14);color: #2F5A2B;text-align: center;}
+/* 上一步／下一步 */
+.aco_nav{display: flex;justify-content: space-between;align-items: center;gap: 12px;margin-top: 26px;padding-top: 20px;border-top: 1.5px dashed rgba(var(--rgb_cocoa),.2) !important;}
+.aco_nav .aco_next{margin-left: auto;}
+.aco_prev{display: inline-flex;align-items: center;gap: 8px;background: none;cursor: pointer;padding: 10px 4px;}
+.aco_prev::before{content: '';width: 8px;height: 8px;border-left: 2px solid var(--colorText);border-bottom: 2px solid var(--colorText);transform: rotate(45deg);}
+.hs_box .aco_prev span{font-family: var(--Kaifont);font-weight: 700;font-size: var(--f15);letter-spacing: .1em;}
+/* 右側摘要 */
+.aco_sum{position: sticky;top: 100px;padding: 24px 24px 22px;border-radius: 26px;background: #fff;box-shadow: 0 16px 34px -26px rgba(var(--rgb_cocoa),.6);}
+.aco_sum_h{display: flex;justify-content: space-between;align-items: baseline;padding-bottom: 12px;border-bottom: 2px dashed var(--color-line) !important;}
+.hs_box .aco_sum_h b{font-family: var(--Kaifont);font-weight: 700;font-size: var(--f20);letter-spacing: .1em;}
+.hs_box .aco_sum_n{font-family: var(--Fraufont);font-weight: 600;font-size: var(--f14);color: var(--color-Main);}
+.aco_sum_list{display: flex;flex-direction: column;gap: 4px;padding: 12px 0;}
+.hs_box .aco_sum_list li{display: flex;justify-content: space-between;gap: 10px;font-size: var(--f14);line-height: 1.7;}
+.hs_box .aco_sum_list li b{font-family: var(--Fraufont);font-weight: 600;font-size: var(--f14);white-space: nowrap;}
+.hs_box .aco_sum_list li.is-empty{color: var(--colorText-sub);}
+.aco_sum_meta{display: grid;grid-template-columns: auto 1fr;gap: 4px 14px;padding: 12px 0;border-top: 2px dashed var(--color-line) !important;}
+.aco_sum_meta:empty{display: none;}
+.hs_box .aco_sum_meta dt{font-size: 13px;color: var(--colorText-sub);line-height: 1.8;}
+.hs_box .aco_sum_meta dd{font-size: var(--f14);line-height: 1.8;}
+.hs_box .aco_sum_tip{margin-top: 6px;font-size: 13px;color: var(--colorText-sub);}
+.aco_d02.is-last{grid-template-columns: minmax(0, 1fr);max-width: 720px;margin: auto;}
+.aco_d02.is-last .aco_sum{display: none;}
+
+/* --- Media Queries --- */
+@media (max-width: 1440px) {
+    .aco_b02 > li{padding: 28px 22px;}
+}
+@media (max-width: 1024px) {
+    .aco_b02{grid-template-columns: repeat(2, 1fr);}
+}
+@media (max-width: 992px) {
+    .aco_c01, .aco_d02{grid-template-columns: 1fr;}
+    .aco_sum{display: none;}
+    .hs_box .aco_steps span{font-size: var(--f14);}
+}
+@media (max-width: 768px) {
+    .aco_c{border-radius: 32px;}
+}
+@media (max-width: 576px) {
+    .aco_b02{grid-template-columns: 1fr;}
+    .aco_pick, .aco_two{grid-template-columns: 1fr;}
+    .aco_items li{grid-template-columns: 46px minmax(0, 1fr) auto;padding-right: 10px;}
+    .aco_items img{width: 46px;height: 46px;}
+    .aco_items .ac_bag_del{grid-column: 3;justify-self: end;}
+    /* 進度列：只顯示數字圓點＋目前步驟名稱 */
+    .aco_steps{display: flex;gap: 6px;}
+    .aco_steps li{flex: none;}
+    .aco_steps li:has([aria-current]){flex: 1;}
+    .aco_steps button{justify-content: center;padding: 7px;}
+    .aco_steps button:not([aria-current]) span{display: none;}
+    .aco_send_btns{grid-template-columns: 1fr;}
+    .aco_form{padding: 20px 16px;border-radius: 24px;}
+    .aco_qa_a{padding-right: 26px;}
+}
+@media (max-width: 480px) {
+    .aco_more .ac_btn.sm{padding: 4px 4px 4px 14px;gap: 8px;}
+    .aco_nav .aco_next{flex: 1;justify-content: space-between;}
+}
+@media (max-width: 380px) {
+}
+</style>
+</head>
+<body>
+
+<script src="../js/ac_layout.js" data-part="header"></script>
+
+<div class="hs_box">
+<main id="main">
+
+    <section class="ac_banner" style="--bn_img:url(../image/acake/p_box.webp);--bn_pos:center 60%;--bn_img_m:url(../image/acake/960/p_box.webp);--bn_pos_m:center">
+        <div class="ac_banner_bg"></div>
+        <div class="ac_banner_in">
+            <div data-animate-in="up">
+                <div class="ac_en">How to Order</div>
+                <h1>訂購方式</h1>
+            </div>
+            <ol class="ac_crumb" data-animate-in="up"><li><a href="index.html">首頁</a></li><li><span>訂購方式</span></li></ol>
+        </div>
+    </section>
+
+    <section class="aco_b">
+        <div class="aco_b01">
+            <div class="ac_title cen" data-animate-in="down">
+                <div class="ac_en">Delivery &amp; Pickup</div>
+                <h2>選一個你方便的方式</h2>
+            </div>
+            <ul class="aco_b02">
+                <li data-animate-in="up">
+                    <em>Online Order</em><h3>7-11 冷凍店到店</h3>
+                    <ul><li>到 7-11 賣貨便直接下單</li><li>接單後製作，約 5 個工作天出貨</li><li>出貨後約 3～5 天抵達門市</li><li>每筆最多 50 顆，超過請分兩筆</li></ul>
+                    <a class="ac_btn gold fill" href="https://myship.7-11.com.tw/general/detail/GM2601282916278" target="_blank" rel="noopener"><span>前往賣貨便</span><i></i></a>
+                </li>
+                <li data-animate-in="up">
+                    <em>Studio Pickup</em><h3>大里工作室自取</h3>
+                    <ul><li>台中大里鐵路街工作室</li><li>採預約制，請先私訊約時間</li><li>私訊口味、數量、姓名、電話</li></ul>
+                    <a class="ac_btn" href="#helper" data-pick="studio"><span>整理私訊文字</span><i></i></a>
+                </li>
+                <li data-animate-in="up">
+                    <em>Market Pre-order</em><h3>市集現場預留</h3>
+                    <ul><li>出攤前私訊預留口味與數量</li><li>到攤位報名字直接取</li><li>當場口味以 IG 公告為準</li></ul>
+                    <a class="ac_btn" href="#helper" data-pick="market"><span>預留市集司康</span><i></i></a>
+                </li>
+                <li data-animate-in="up">
+                    <em>Home Delivery</em><h3>宅配</h3>
+                    <ul><li>需要宅配到府請私訊詢問</li><li>布蕾塔、禮盒也可宅配</li><li>運費與出貨日私訊確認</li></ul>
+                    <a class="ac_btn" href="#helper" data-pick="home"><span>詢問宅配</span><i></i></a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="aco_c">
+        <div class="aco_c01">
+            <div class="ac_title" data-animate-in="left">
+                <div class="ac_en">Notes</div>
+                <h2>訂購須知</h2>
+            </div>
+            <div class="aco_qa" data-animate-in="up">
+                <details open><summary><span>多久可以拿到司康？</span><i aria-hidden="true"></i></summary><div class="aco_qa_a"><p>司康都是接單後才開始製作，於 5 個工作天內出貨，出貨後約 3～5 天抵達取貨門市。若需要「指定出貨日」或特殊安排，請先私訊我們。</p></div></details>
+                <details><summary><span>收到後怎麼保存、怎麼吃？</span><i aria-hidden="true"></i></summary><div class="aco_qa_a"><p>每顆司康都單獨包裝，可冰在冷凍庫當儲糧，想吃時加熱回烤就像剛出爐。布蕾塔冷藏可保存 7 天、冷凍 20 天。商品請於 3 日內取貨，以免影響品質。</p></div></details>
+                <details><summary><span>下單後可以修改嗎？</span><i aria-hidden="true"></i></summary><div class="aco_qa_a"><p>賣貨便下單後無法修改訂單與收件資訊，下單前請再確認取貨門市、姓名與手機。</p></div></details>
+                <details><summary><span>可以退換貨嗎？</span><i aria-hidden="true"></i></summary><div class="aco_qa_a"><p>食品不適用 7 天鑑賞期，恕無退換貨。商品全程低溫配送，若收到時商品有狀況，請立即拍照傳給我們，我們會盡快回覆。</p></div></details>
+                <details><summary><span>可以客製下午茶點心或大量訂購嗎？</span><i aria-hidden="true"></i></summary><div class="aco_qa_a"><p>可以，活動、送禮、婚禮小物等需求都歡迎來訊討論數量與日期。也接受口味許願，A娜 會偷偷筆記起來。</p></div></details>
+            </div>
+        </div>
+    </section>
+
+    <section class="aco_d" id="helper">
+        <div class="aco_d01">
+            <div class="aco_d01_head">
+                <div class="ac_title" data-animate-in="left">
+                    <div class="ac_en">Order Helper</div>
+                    <h2>私訊小幫手</h2>
+                </div>
+                <p data-animate-in="up">四個步驟，幫你把想訂的內容整理成一段私訊。<span class="ac_s">這裡不是結帳頁，</span><span class="ac_s">傳給 A娜 並收到回覆確認後才算訂好。</span></p>
+            </div>
+
+            <ol class="aco_steps" aria-label="步驟">
+                <li><button type="button" data-go="1" aria-current="step"><i>1</i><span>選品項</span></button></li>
+                <li><button type="button" data-go="2" disabled><i>2</i><span>取貨方式</span></button></li>
+                <li><button type="button" data-go="3" disabled><i>3</i><span>聯絡資料</span></button></li>
+                <li><button type="button" data-go="4" disabled><i>4</i><span>傳送訊息</span></button></li>
+            </ol>
+
+            <div class="aco_d02">
+                <form class="aco_form" novalidate>
+
+                    <!-- 步驟 1：品項 -->
+                    <fieldset class="aco_panel" data-step="1">
+                        <legend class="aco_panel_h"><b>想訂哪些？</b><span>數量可以直接調整</span></legend>
+                        <ul class="aco_items"></ul>
+                        <div class="aco_items_empty" hidden>
+                            <p>還沒有選任何品項。</p>
+                            <div class="aco_empty_btns">
+                                <a class="ac_btn" href="products.html#menu"><span>到商品頁挑選</span><i></i></a>
+                                <button class="ac_btn aco_open_flv" type="button"><span>直接選司康口味</span><i></i></button>
+                            </div>
+                        </div>
+                        <details class="aco_flvbox">
+                            <summary><span>＋ 加點司康口味</span><small>共 28 種，點一下加一顆</small></summary>
+                            <div class="aco_flv"></div>
+                        </details>
+                        <div class="aco_more">
+                            <label class="ac_sr" for="aco_more_sel">加點其他商品</label>
+                            <select id="aco_more_sel"><option value="">＋ 加點其他商品…</option></select>
+                            <button class="ac_btn sm" type="button"><span>加入</span><i></i></button>
+                        </div>
+                        <div class="aco_clear_row"><button type="button" class="aco_clear">清空清單</button></div>
+                        <p class="aco_err" data-err="items" hidden>請先選至少一項商品。</p>
+                    </fieldset>
+
+                    <!-- 步驟 2：取貨方式 -->
+                    <fieldset class="aco_panel" data-step="2" hidden>
+                        <legend class="aco_panel_h"><b>怎麼拿？</b><span>選一種取貨方式</span></legend>
+                        <p class="aco_note is-shop">想用 <b>7-11 冷凍店到店</b>？直接到 <a href="https://myship.7-11.com.tw/general/detail/GM2601282916278" target="_blank" rel="noopener">賣貨便</a> 選口味付款就好，不用填這份。</p>
+                        <div class="aco_pick" role="radiogroup" aria-label="取貨方式">
+                            <label><input type="radio" name="pick" value="studio" checked><b>大里工作室自取</b><span>預約制，A娜 回覆時間</span></label>
+                            <label><input type="radio" name="pick" value="market"><b>市集現場預留</b><span>到攤位報名字取</span></label>
+                            <label><input type="radio" name="pick" value="home"><b>宅配</b><span>運費、出貨日私訊確認</span></label>
+                        </div>
+                        <div class="aco_sub" data-for="studio"><label class="aco_field"><span>希望取貨日期（選填）</span><input type="date" id="aco_date"></label><p class="aco_hint">司康接單後製作，建議預留 3～5 天。</p></div>
+                        <div class="aco_sub" data-for="market" hidden><label class="aco_field"><span>要去哪一場市集</span><select id="aco_market"><!--markets:options--><option value="11.20 臺南｜森之市｜2026 珈琲與花物語・第四回">11.20　臺南｜森之市｜2026 珈琲與花物語・第四回</option><option value="11.28 彰化｜森之市｜2026 香菜市集">11.28　彰化｜森之市｜2026 香菜市集</option><option value="12.04 臺北｜交換禮物主題市集">12.04　臺北｜交換禮物主題市集</option><option value="12.12 高雄｜聖誕主題市集">12.12　高雄｜聖誕主題市集</option><option value="12.19 臺南｜年末市集">12.19　臺南｜年末市集</option><!--/markets:options--></select></label></div>
+                        <div class="aco_sub" data-for="home" hidden><p class="aco_hint">宅配地址請在私訊中提供，運費與出貨日 A娜 會一起回覆。</p></div>
+                    </fieldset>
+
+                    <!-- 步驟 3：聯絡資料 -->
+                    <fieldset class="aco_panel" data-step="3" hidden>
+                        <legend class="aco_panel_h"><b>怎麼稱呼你？</b><span>只會放進訊息文字裡，網站不會儲存</span></legend>
+                        <div class="aco_two">
+                            <label class="aco_field"><span>訂購姓名 <em>必填</em></span><input type="text" id="aco_name" autocomplete="name" required></label>
+                            <label class="aco_field"><span>手機 <em>必填</em></span><input type="tel" id="aco_tel" autocomplete="tel" inputmode="tel" placeholder="09xx-xxx-xxx" required></label>
+                        </div>
+                        <p class="aco_err" data-err="contact" hidden>請填寫姓名與手機，A娜 才能幫你保留。</p>
+                        <label class="aco_field aco_note_f"><span>備註（選填：送禮、指定日期、口味許願…）</span><textarea id="aco_note" rows="3"></textarea></label>
+                    </fieldset>
+
+                    <!-- 步驟 4：傳送 -->
+                    <fieldset class="aco_panel aco_send" data-step="4" hidden>
+                        <legend class="aco_panel_h"><b>最後一步：傳給 A娜</b><span>確認內容後，選一個管道傳送</span></legend>
+                        <div class="aco_receipt">
+                            <div class="aco_receipt_h"><b>A. cake</b><span>私訊內容</span></div>
+                            <pre class="aco_pre" aria-live="polite"></pre>
+                        </div>
+                        <ol class="aco_howto">
+                            <li>按下按鈕，訊息會自動複製並開啟 IG 或 LINE</li>
+                            <li>在對話框貼上、送出</li>
+                            <li>等 A娜 回覆確認數量、價格與時間</li>
+                        </ol>
+                        <div class="aco_send_btns">
+                            <a class="ac_btn fill aco_go" href="https://www.instagram.com/acake999/" target="_blank" rel="noopener"><span>複製並開啟 IG 私訊</span><i></i></a>
+                            <a class="ac_btn aco_go" href="https://page.line.me/yzg4109n" target="_blank" rel="noopener"><span>複製並開啟 LINE</span><i></i></a>
+                            <button type="button" class="aco_copy">只複製文字</button>
+                        </div>
+                        <p class="aco_done" hidden>已複製！到 IG 或 LINE 貼上送出就完成了。</p>
+                    </fieldset>
+
+                    <div class="aco_nav">
+                        <button class="aco_prev" type="button" hidden><span>上一步</span></button>
+                        <button class="ac_btn fill aco_next" type="button"><span>下一步：取貨方式</span><i></i></button>
+                    </div>
+                </form>
+
+                <aside class="aco_sum" aria-label="訂單摘要">
+                    <div class="aco_sum_h"><b>訂單摘要</b><span class="aco_sum_n"></span></div>
+                    <ul class="aco_sum_list"></ul>
+                    <dl class="aco_sum_meta"></dl>
+                    <p class="aco_sum_tip">完成四個步驟後才會出現傳送按鈕。</p>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<script src="../js/ac_layout.js" data-part="footer"></script>
+</div>
+
+<script id="ac_data" type="application/json"><!--products:data-->{"categories":[{"id":"scone","name":"經典司康","en":"Classic Scones"},{"id":"special","name":"厚片・夾心","en":"Filled Scones"},{"id":"limited","name":"季節限定","en":"Limited"},{"id":"dessert","name":"甜點","en":"Desserts"},{"id":"pantry","name":"果醬・橙品","en":"Jam & Citrus"},{"id":"gift","name":"節慶禮盒","en":"Gift Boxes"}],"flavors":[{"name":"原味","group":"經典"},{"name":"伯爵茶","group":"經典"},{"name":"純粹蜂蜜","group":"經典"},{"name":"蔓越莓","group":"經典"},{"name":"藍莓","group":"經典"},{"name":"蘭姆酒葡萄乾","group":"經典"},{"name":"英式經典奶酥","group":"經典"},{"name":"鹹乳酪","group":"經典"},{"name":"蜜漬橙片","group":"果香"},{"name":"草莓乳酪果餡","group":"果香"},{"name":"綜合莓果奇亞籽乳酪","group":"果香"},{"name":"桑椹","group":"果香"},{"name":"英式奶酥蘋果派","group":"果香"},{"name":"草莓花生無違和","group":"果香"},{"name":"滿嘴巧克力","group":"可可・堅果"},{"name":"巧克力","group":"可可・堅果"},{"name":"黑森林","group":"可可・堅果"},{"name":"焦糖核桃","group":"可可・堅果"},{"name":"海鹽栗子","group":"可可・堅果"},{"name":"咖啡奶油乾酪杏仁脆片","group":"可可・堅果"},{"name":"純粹抹茶","group":"茶香"},{"name":"泰式奶茶","group":"茶香"},{"name":"鐵觀音","group":"茶香"},{"name":"蜜橙烏龍茶","group":"茶香"},{"name":"榛果可可脆粒花捲","group":"花捲"},{"name":"肉桂球球捲","group":"花捲"},{"name":"南瓜有機籽花捲","group":"花捲"},{"name":"紫薯地瓜花捲","group":"花捲"}],"products":[{"id":"classic","name":"英式經典司康","en":"Classic English Scone","category":"scone","status":"regular","myship":true,"price":"NT$ 70 起","summary":"近 30 種口味任選，每顆單獨包裝，冷凍保存、回烤即食。","desc":"散發淡雅奶油與麵粉香氣，厚實柔鬆的口感，是經典的英式風味。\n\n司康接單後才開始製作，每顆都單獨包裝。冰在冷凍庫當儲糧，想吃的時候輕鬆加熱回烤，就像剛出爐一樣香氣四溢、蓬鬆濕潤。沏壺茶，搭配果醬或凝脂奶油（clotted cream）一起享用。","specs":[{"name":"口味","value":"原味、伯爵茶、蜜漬橙片、滿嘴巧克力、花捲系列等，完整口味見下方「口味菜單」"},{"name":"包裝","value":"每顆單獨包裝"},{"name":"取貨","value":"7-11 冷凍店到店／大里工作室自取／市集預留"}],"instagram":"","images":[{"src":"p_box.webp","width":2000,"height":2000},{"src":"p_swirl.webp","width":1440,"height":1440},{"src":"a_cut.webp","width":1440,"height":1920}]},{"id":"orange","name":"蜜漬橙片司康","en":"Candied Orange Scone","category":"scone","status":"regular","myship":true,"price":"NT$ 70 起","summary":"橙片低溫蜜漬八天，果香與微苦韻味融進奶香裡。","desc":"香橙低溫蜜漬，鎖住果香與微苦韻味，與英式司康的奶香酥鬆完美交融。\n\n橙皮的清新果酸緩緩綻放，讓英式經典司康多了一份法式優雅與成熟風味。每一批蜜漬橙片都要經過八天的照顧，冬季才會正常供應。","specs":[{"name":"供應","value":"冬季為主，依蜜漬橙片製作進度"},{"name":"取貨","value":"7-11 冷凍店到店／大里工作室自取／市集預留"}],"instagram":"DR11BtokToJ","images":[{"src":"p_orange.webp","width":1440,"height":1440},{"src":"h_orange.webp","width":1440,"height":1440}]},{"id":"choco","name":"滿嘴巧克力司康","en":"Double Chocolate Scone","category":"scone","status":"regular","myship":true,"price":"NT$ 70 起","summary":"冬天才有的濃郁可可，巧克力控的指定款。","desc":"有冬天的感覺，才會安排滿嘴巧克力出場。可可的厚度一口接一口，是市集上許多朋友指定要預留的口味。","specs":[{"name":"供應","value":"天氣轉涼後供應"},{"name":"取貨","value":"7-11 冷凍店到店／大里工作室自取／市集預留"}],"instagram":"DTNX5_nEX8L","images":[{"src":"p_choco.webp","width":1440,"height":1439},{"src":"p_choco2.webp","width":1440,"height":1440}]},{"id":"spicy","name":"辣起司司康","en":"Spicy Cheese Scone","category":"scone","status":"regular","myship":false,"price":"","summary":"日本八幡屋礒五郎七味粉＋墨西哥辣椒，溫潤不嗆的辣。","desc":"整體辣度適中，口感溫和。\n\n嚴選日本八幡屋礒五郎唐辛子七味粉，古老的醇香底韻注入西式甜點；墨西哥辣椒的鮮辣與辣起司的濃郁起司香氣相輔相成，交織出絲絲入扣的辛香層次。\n\n司康主要呈現溫潤不嗆的辣感，讓你越吃越香。","specs":[{"name":"辣度","value":"適中，溫潤不嗆"},{"name":"供應","value":"市集為主，歡迎私訊詢問"}],"instagram":"DUIUbvVETm8","images":[{"src":"p_spicy.webp","width":1440,"height":1440},{"src":"p_spicy2.webp","width":1440,"height":1440}]},{"id":"swirl","name":"花捲司康系列","en":"Swirl Scones","category":"scone","status":"regular","myship":true,"price":"NT$ 70 起","summary":"捲紋層次帶出酥鬆與綿密濕潤，口味依季節輪替。","desc":"把餡料一圈圈捲進司康裡，捲紋層次帶出酥鬆與綿密濕潤的口感。\n\n常見口味有榛果可可脆粒花捲、肉桂球球捲、南瓜有機籽花捲、紫薯地瓜花捲；年節期間另有伯爵茶球球捲限定口味。","specs":[{"name":"口味","value":"榛果可可脆粒／肉桂球球捲／南瓜有機籽／紫薯地瓜"},{"name":"取貨","value":"7-11 冷凍店到店／大里工作室自取／市集預留"}],"instagram":"DTiOWsgkcLd","images":[{"src":"p_swirl.webp","width":1440,"height":1440},{"src":"h_swirl.webp","width":1440,"height":1440}]},{"id":"redbean","name":"紅豆厚片司康","en":"Red Bean Scone Sandwich","category":"special","status":"regular","myship":true,"price":"NT$ 135","summary":"厚切司康夾入滿滿紅豆餡，一顆就很有份量。","desc":"把司康對切成厚片，夾入滿滿的紅豆餡。外層酥香、內餡綿密，是一顆就很有份量的點心。市集上另有芋頭厚片司康不定期登場。","specs":[{"name":"規格","value":"一入"},{"name":"取貨","value":"7-11 冷凍店到店／大里工作室自取"}],"instagram":"","images":[{"src":"p_redbean.webp","width":2000,"height":2000},{"src":"p_taro.webp","width":1440,"height":1439}]},{"id":"mulberry-jam","name":"桑椹抹醬司康","en":"Mulberry Jam Scone","category":"special","status":"regular","myship":true,"price":"NT$ 135","summary":"抹上自家熬煮的桑椹果餡，酸甜剛好。","desc":"每年四月親自到桑園採收、挑果，熬成自家的桑椹果餡，再滿滿抹在司康上。桑椹的季節很短，果醬用完就要等下一次採收期。","specs":[{"name":"規格","value":"一入"},{"name":"供應","value":"依桑椹果餡存量"}],"instagram":"DWoQR85kdUB","images":[{"src":"p_jamscone.webp","width":2000,"height":2000}]},{"id":"mulberry","name":"桑果夾心司康","en":"Fresh Mulberry Scone","category":"limited","status":"seasonal","myship":false,"price":"","summary":"四月桑椹季限定，來得剛好，也剛好珍貴。","desc":"桑椹的季節很短，在剛好時節相遇。把島嶼的季節風味注入每一顆司康裡，能吃到這一款期間限定品項真的很幸運。","specs":[{"name":"供應","value":"每年四月桑椹季，市集限定"}],"instagram":"DWyhdc4kZVI","images":[{"src":"p_mulberry.webp","width":1440,"height":1800},{"src":"p_mulberry2.webp","width":1080,"height":1350}]},{"id":"durian","name":"榴槤杯子司康","en":"Durian Cup Scone","category":"limited","status":"seasonal","myship":false,"price":"","summary":"椰絲、榴槤泥、榴槤酥與司康，三層分明的杯子甜點。","desc":"榴槤本身氣味強烈、口感濃郁，透過層次分明的結構，每一口都柔滑不膩。\n\n頂層撒滿細雪般的白色椰絲，帶有淡淡椰香與咬勁；中層是質地滑順的濃郁榴槤泥，被馬斯卡彭柔化得更加順口；底層交織著榴槤酥與鬆軟司康。","specs":[{"name":"供應","value":"活動期間少量供應"}],"instagram":"DbI_ODlj7Sl","images":[{"src":"p_durian.webp","width":1587,"height":1983},{"src":"p_durian2.webp","width":2000,"height":2000},{"src":"p_durian3.webp","width":2000,"height":1996}]},{"id":"genmaicha","name":"一保堂穀香玄米茶司康","en":"Genmaicha Scone","category":"limited","status":"seasonal","myship":false,"price":"","summary":"京都玄米茶的茶韻，遇上台灣爆米香。","desc":"將玄米茶茶葉與炒米交織出的烘焙香氣揉進司康，入口淡淡茶韻，隨後綻放溫暖的米香與奶油香。\n\n上層淋上玄米茶奶醬，再搭配台灣傳統爆米香，酥脆的米粒在口中輕輕散開，把一份屬於台灣的米食記憶，放進一顆司康裡。","specs":[{"name":"供應","value":"活動限定"}],"instagram":"Db8K17HPKgo","images":[{"src":"p_genmai.webp","width":1350,"height":1688}]},{"id":"oolong","name":"紅韻金花奶油乳酪司康","en":"Red Oolong Scone with Daylily Cream Cheese","category":"limited","status":"seasonal","myship":false,"price":"","summary":"紅烏龍茶底、蜜漬金針花，花東風土的台味甜點。","desc":"以焙火香氣醇厚的紅烏龍茶為底，揉入帶有自然甘甜的蜜漬金針花，頂層抹上特製金針花風味奶油乳酪。\n\n醇厚的茶香、金針花的細緻花香與濃郁滑順的乳香相互交織，彷彿置身花東的暖陽與風土中。","specs":[{"name":"供應","value":"活動期間限定"}],"instagram":"DbihP44RSjj","images":[{"src":"p_oolong.webp","width":1599,"height":2000}]},{"id":"pinecone","name":"松果巧克力司康","en":"Pine Cone Chocolate Scone","category":"limited","status":"seasonal","myship":false,"price":"","summary":"聖誕節限定，糖粉像雪、可可奶酥像土壤。","desc":"為聖誕季節打造的限定司康。以巧克力為主體風味，表層糖粉像是下了雪般夢幻，底層可可奶酥像是土裡的情境，再點綴聖誕造型餅乾。\n\n搭配覆盆子玫瑰果醬，帶來清新的莓果香與明亮的酸度。整體香氣深沉、口感紮實，風味濃郁卻不甜膩。","specs":[{"name":"供應","value":"聖誕節限定"},{"name":"取貨","value":"7-11 賣貨便／大里工作室自取（私訊預約）／市集取貨"}],"instagram":"DSFUUpqEcI-","images":[{"src":"p_pinecone.webp","width":1080,"height":1350},{"src":"p_pinecone2.webp","width":1080,"height":1350}]},{"id":"brulee","name":"布蕾塔","en":"Crème Brûlée Tart","category":"dessert","status":"regular","myship":true,"price":"NT$ 210 起","summary":"A. cake 經典甜點，絲滑順口、不甜不膩。","desc":"布蕾塔內餡絲滑順口且不甜不膩，口感綿密細緻，充滿濃郁蛋奶香。不加一滴水，自然無添加，注入深邃的層次。","specs":[{"name":"規格","value":"三入／六入／十二入"},{"name":"保存","value":"冷藏 7 天、冷凍 20 天"},{"name":"取貨","value":"7-11 冷凍店到店／大里工作室自取／宅配"}],"instagram":"DMPO2yWTSjv","images":[{"src":"p_brulee.webp","width":2000,"height":2000},{"src":"p_brulee_ny2.webp","width":1440,"height":1920}]},{"id":"jam","name":"手工果醬","en":"Handmade Jam","category":"pantry","status":"regular","myship":true,"price":"NT$ 295 起","summary":"香吉士、綜合莓果、桑椹，最經典的司康吃法。","desc":"自家熬煮的果醬，抹在溫熱的司康上，是最經典的英式吃法。桑椹果醬使用親自採收的桑果，數量有限。","specs":[{"name":"口味","value":"香吉士／綜合莓果／桑椹"},{"name":"容量","value":"250g／75g（桑椹僅 250g）"}],"instagram":"","images":[{"src":"p_jam.webp","width":1996,"height":2000}]},{"id":"orange-strip","name":"蜜漬橙條","en":"Candied Orange Peel","category":"pantry","status":"regular","myship":true,"price":"NT$ 150","summary":"低溫蜜漬的橙皮，配茶、入菜、做甜點都好。","desc":"與蜜漬橙片司康同一批細心照顧的香橙，切成條狀低溫蜜漬，保留橙皮的清香與微苦。","specs":[{"name":"規格","value":"80g"}],"instagram":"","images":[{"src":"p_orangestrip.webp","width":1440,"height":1440}]},{"id":"orange-choc","name":"蜜漬橙片巧克力","en":"Chocolate-dipped Candied Orange","category":"pantry","status":"regular","myship":true,"price":"NT$ 750（十入）","summary":"蜜漬橙片沾上巧克力，送禮自用都合適。","desc":"以蜜漬橙片沾裹巧克力，橙香的清新酸甜與可可的濃郁在口中交疊。","specs":[{"name":"規格","value":"十入／一入"}],"instagram":"","images":[{"src":"p_orangechoc.webp","width":1440,"height":1440}]},{"id":"moon","name":"中秋禮盒｜玉兔嶼花相映","en":"Moonlit of Golden","category":"gift","status":"ended","myship":false,"price":"NT$ 480 起","summary":"流心奶黃司康，以英式司康詮釋中秋送禮。","desc":"以月兔環繞明月為意象，揉合花卉元素與團聚、祝福的美好寓意，延伸至禮盒設計之中。\n\n流心奶黃司康：金黃酥香的司康隨著撥開，溫潤流沙般的奶黃緩緩化開，濃郁奶香與微微鹹香交疊，細膩卻不甜膩。","specs":[{"name":"四入禮盒","value":"NT$ 480（早鳥 NT$ 430）"},{"name":"六入禮盒","value":"NT$ 680（早鳥 NT$ 630）"},{"name":"檔期","value":"2026 中秋，已結束"}],"instagram":"DcxX9E8kYhh","images":[{"src":"p_moon.webp","width":1500,"height":2000},{"src":"p_moon2.webp","width":1080,"height":1440},{"src":"p_moon3.webp","width":1500,"height":2000}]},{"id":"newyear","name":"新春禮盒｜馬上有福","en":"Lunar New Year Gift Box","category":"gift","status":"ended","myship":false,"price":"NT$ 390 起","summary":"四款特色司康，盒內隨機附福氣貓咪吊牌。","desc":"挑選 A. cake 四款最具特色的司康：原味、蜜漬橙片、草莓花生無違和，以及年節限定的伯爵茶球球捲。無論送禮或犒賞自己都合適，盒內隨機贈送一款福氣貓咪吊牌。","specs":[{"name":"馬上有福（四入）","value":"NT$ 390"},{"name":"迎春大發（十入）","value":"NT$ 1,100，含蜜漬橙條、香吉士果醬與抹刀"},{"name":"檔期","value":"2026 春節，已結束"}],"instagram":"DUalBVjEVdj","images":[{"src":"p_newyear.webp","width":1440,"height":1800},{"src":"p_brulee_ny.webp","width":1440,"height":1920}]}]}<!--/products:data--></script>
+<script id="ac_markets" type="application/json"><!--markets:data-->[{"name":"森之市｜2026 珈琲與花物語・第四回","city":"臺南","place":"水交社眷村文化園區","start":"2026-11-20","end":"2026-11-22","hours":"12:00–18:00","note":"免費入場"},{"name":"森之市｜2026 香菜市集","city":"彰化","place":"員林園","start":"2026-11-28","end":"2026-11-29","hours":"13:00–18:00","note":"香菜主題・免費入場"},{"name":"交換禮物主題市集","city":"臺北","place":"臺北表演藝術中心","start":"2026-12-04","end":"2026-12-06","hours":"","note":"時間請見 IG 公告"},{"name":"聖誕主題市集","city":"高雄","place":"高雄市立美術館","start":"2026-12-12","end":"2026-12-13","hours":"","note":"時間請見 IG 公告"},{"name":"年末市集","city":"臺南","place":"地點請見 IG 公告","start":"2026-12-19","end":"2026-12-20","hours":"","note":""},{"name":"FOR STOCKISTS EXHIBITION（東京）首度來臺","city":"臺北","place":"松山文創園區 北向製菸工廠","start":"2026-11-13","end":"2026-11-15","hours":"11:00–18:00","note":"購票入場"},{"name":"灰熊綠展｜秋天裡。海精靈の呢喃","city":"苗栗","place":"通霄海水浴場","start":"2026-11-06","end":"2026-11-08","hours":"11:00–17:00","note":"購票入場"},{"name":"野陶祭 YA TA FESTIVAL｜心田中的印記","city":"彰化","place":"穀倉起藝文創園區","start":"2026-08-14","end":"2026-08-16","hours":"10:00–17:00","note":"主辦：灰熊綠展"},{"name":"小世界市集","city":"臺中","place":"臺灣民俗文物館","start":"2026-07-25","end":"2026-07-26","hours":"13:00–18:00","note":"榴槤杯子司康首發"},{"name":"2026 歷史復活節","city":"臺北","place":"臺北記憶倉庫","start":"2026-06-27","end":"","hours":"13:00–18:00","note":""},{"name":"好好手感微笑市集｜島國禮作 2026 島南","city":"高雄","place":"高雄市立美術館戶外廣場","start":"2026-04-10","end":"2026-04-12","hours":"13:00–19:00","note":"桑果夾心司康"},{"name":"森之市 Mori Market｜喫茶菓子","city":"嘉義","place":"嘉義文創園區","start":"2026-03-28","end":"2026-03-29","hours":"13:00–18:00","note":""},{"name":"小蝸牛市集","city":"臺北","place":"松山文創園區","start":"2026-02-27","end":"2026-03-01","hours":"12:00–17:00","note":""},{"name":"良の日","city":"高雄","place":"高雄市立美術館廣場","start":"2026-01-17","end":"2026-01-18","hours":"14:00–19:00","note":""},{"name":"好好手感微笑市集","city":"高雄","place":"高雄市立美術館","start":"2026-01-10","end":"2026-01-11","hours":"13:00–18:00","note":""}]<!--/markets:data--></script>
+<script src="../js/scrollfade.js"></script>
+<script src="../js/ac_common.js"></script>
+<script>
+    /* 私訊小幫手：4 步驟引導（品項 → 取貨 → 聯絡 → 傳送），清單與 header 的私訊清單共用 */
+    (function () {
+        var D = window.AC_DATA, bag = window.acBag, esc = window.acEsc;
+        var $ = function (s) { return document.querySelector(s); };
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var root = $('#helper'), wrap = $('.aco_d02');
+        var panels = [].slice.call(document.querySelectorAll('.aco_panel'));
+        var stepBtns = [].slice.call(document.querySelectorAll('.aco_steps button'));
+        var prevBtn = $('.aco_prev'), nextBtn = $('.aco_next');
+        var NEXT = { 1: '下一步：取貨方式', 2: '下一步：聯絡資料', 3: '下一步：確認並傳送' };
+        var step = 1, reached = 1;
+        var classic = D.products.filter(function (p) { return p.id === 'classic'; })[0];
+
+        /* ---------- 步驟 1：品項 ---------- */
+        var itemsEl = $('.aco_items'), emptyEl = $('.aco_items_empty'), flvBox = $('.aco_flvbox'), flv = $('.aco_flv');
+        var groups = {};
+        D.flavors.forEach(function (f) { (groups[f.group] = groups[f.group] || []).push(f.name); });
+        flv.innerHTML = Object.keys(groups).map(function (g) {
+            return '<div><h4>' + esc(g) + '</h4><div class="aco_flv_g">' + groups[g].map(function (n) {
+                return '<button class="ac_chip" type="button" data-flv="' + esc(n) + '"><span>' + esc(n) + '</span><b>0</b></button>';
+            }).join('') + '</div></div>';
+        }).join('');
+        flv.addEventListener('click', function (e) {
+            var c = e.target.closest('[data-flv]'); if (!c || !classic) return;
+            bag.add({ id: 'classic', name: classic.name, opt: c.getAttribute('data-flv'), img: window.acImg(classic.images[0], 480) }, 1);
+        });
+        $('.aco_open_flv').addEventListener('click', function () { flvBox.open = true; flvBox.scrollIntoView({ block: 'nearest', behavior: reduce ? 'auto' : 'smooth' }); });
+        var sel = $('#aco_more_sel');
+        D.products.forEach(function (p) {
+            if (p.id === 'classic' || p.status === 'ended') return;
+            var o = document.createElement('option'); o.value = p.id; o.textContent = p.name + (p.price ? '（' + p.price + '）' : ''); sel.appendChild(o);
+        });
+        $('.aco_more button').addEventListener('click', function () {
+            var p = D.products.filter(function (x) { return x.id === sel.value; })[0]; if (!p) { sel.focus(); return; }
+            bag.add({ id: p.id, name: p.name, img: window.acImg(p.images[0], 480) }, 1);
+            sel.value = '';
+        });
+        itemsEl.addEventListener('click', function (e) {
+            var li = e.target.closest('li'); if (!li) return;
+            var key = li.getAttribute('data-key'), b = e.target.closest('[data-d]');
+            if (b) bag.set(key, bag.qty(key) + (+b.getAttribute('data-d')));
+            if (e.target.closest('.ac_bag_del')) bag.remove(key);
+        });
+        /* 清空：按兩次才執行 */
+        var clr = $('.aco_clear'), clrT;
+        clr.addEventListener('click', function () {
+            if (!clr.classList.contains('is-confirm')) {
+                clr.classList.add('is-confirm'); clr.textContent = '再按一次確認清空';
+                clrT = setTimeout(function () { clr.classList.remove('is-confirm'); clr.textContent = '清空清單'; }, 3000);
+                return;
+            }
+            clearTimeout(clrT); clr.classList.remove('is-confirm'); clr.textContent = '清空清單';
+            bag.clear(); window.acToast('清單已清空', false);
+        });
+
+        /* ---------- 步驟 2：取貨 ---------- */
+        var picks = [].slice.call(document.querySelectorAll('.aco_pick input'));
+        var mSel = $('#aco_market'), dt = $('#aco_date');
+        var g = window.acMarkets();
+        if (g) {
+            mSel.innerHTML = g.upcoming.map(function (m) {
+                var d = window.acMkDate(m), v = d.a + (d.b ? '–' + d.b : '') + ' ' + m.city + '｜' + m.name;
+                return '<option value="' + esc(v) + '">' + esc(v) + '</option>';
+            }).join('');
+            if (!g.upcoming.length) {
+                var mk = picks.filter(function (p) { return p.value === 'market'; })[0];
+                mk.disabled = true; mk.closest('label').querySelector('span').textContent = '目前沒有排定的市集';
+            }
+        }
+        var t = new Date(); t.setDate(t.getDate() + 3);
+        dt.min = t.getFullYear() + '-' + ('0' + (t.getMonth() + 1)).slice(-2) + '-' + ('0' + t.getDate()).slice(-2);
+        function pick() { var p = picks.filter(function (x) { return x.checked; })[0]; return p ? p.value : 'studio'; }
+        function showSub() {
+            var v = pick();
+            [].forEach.call(document.querySelectorAll('.aco_sub'), function (s) { s.hidden = s.getAttribute('data-for') !== v; });
+            render();
+        }
+        picks.forEach(function (p) { p.addEventListener('change', showSub); });
+        function setPick(v) { picks.forEach(function (p) { if (!p.disabled) p.checked = p.value === v; }); showSub(); }
+        [].forEach.call(document.querySelectorAll('[data-pick]'), function (a) { a.addEventListener('click', function () { setPick(a.getAttribute('data-pick')); }); });
+
+        /* ---------- 步驟 3：聯絡 ---------- */
+        var nameI = $('#aco_name'), telI = $('#aco_tel'), noteI = $('#aco_note');
+        function telOk(v) { return /^09\d{8}$/.test(v.replace(/[\s-]/g, '')); }
+        [nameI, telI].forEach(function (i) { i.addEventListener('input', function () { i.classList.remove('is-bad'); $('[data-err="contact"]').hidden = true; }); });
+        [dt, mSel, nameI, telI, noteI].forEach(function (i) { i.addEventListener('input', render); i.addEventListener('change', render); });
+
+        /* ---------- 檢查與切換步驟 ---------- */
+        function check(n) {
+            if (n === 1) { var ok = bag.count() > 0; $('[data-err="items"]').hidden = ok; return ok; }
+            if (n === 3) {
+                var nOk = !!nameI.value.trim(), tOk = telOk(telI.value);
+                nameI.classList.toggle('is-bad', !nOk); telI.classList.toggle('is-bad', !tOk);
+                var err = $('[data-err="contact"]');
+                err.textContent = !nOk || !telI.value.trim() ? '請填寫姓名與手機，A娜 才能幫你保留。' : '手機號碼格式好像不對，請填 09 開頭的 10 碼。';
+                err.hidden = nOk && tOk;
+                if (!nOk) nameI.focus(); else if (!tOk) telI.focus();
+                return nOk && tOk;
+            }
+            return true;
+        }
+        function go(n, focus) {
+            step = n; reached = Math.max(reached, n);
+            panels.forEach(function (p) { p.hidden = +p.getAttribute('data-step') !== n; });
+            stepBtns.forEach(function (b, i) {
+                var k = i + 1;
+                b.disabled = k > reached;
+                b.classList.toggle('is-done', k < reached && k !== n);
+                if (k === n) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current');
+            });
+            prevBtn.hidden = n === 1;
+            nextBtn.hidden = n === 4;
+            if (n < 4) nextBtn.querySelector('span').textContent = NEXT[n];
+            wrap.classList.toggle('is-last', n === 4);
+            $('.aco_done').hidden = true;
+            render();
+            if (focus !== false) {
+                var top = root.querySelector('.aco_steps').getBoundingClientRect().top + window.scrollY - 90;
+                if (Math.abs(window.scrollY - top) > 40) window.scrollTo({ top: top, behavior: reduce ? 'auto' : 'smooth' });
+                var h = panels[n - 1].querySelector('.aco_panel_h b'); if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
+            }
+        }
+        nextBtn.addEventListener('click', function () { if (check(step)) go(step + 1); });
+        prevBtn.addEventListener('click', function () { go(step - 1); });
+        stepBtns.forEach(function (b, i) {
+            b.addEventListener('click', function () {
+                var k = i + 1; if (k > reached) return;
+                for (var s = 1; s < k; s++) if (!check(s)) { go(s); return; }
+                go(k);
+            });
+        });
+
+        /* ---------- 訊息與摘要 ---------- */
+        var PICK = { studio: '大里工作室自取', market: '市集現場預留', home: '宅配' };
+        function lines() {
+            var items = bag.items(), L = [], grp = {};
+            items.forEach(function (it) { (grp[it.name] = grp[it.name] || []).push(it); });
+            Object.keys(grp).forEach(function (n) {
+                var list = grp[n];
+                if (list.length === 1 && !list[0].opt) { L.push({ t: n, q: list[0].qty }); return; }
+                L.push({ t: n, q: list.reduce(function (a, b) { return a + b.qty; }, 0), sub: list.map(function (it) { return (it.opt || '不指定') + ' × ' + it.qty; }) });
+            });
+            return L;
+        }
+        function howText() {
+            var v = pick(), s = PICK[v];
+            if (v === 'studio' && dt.value) { var d = dt.value.split('-'); s += '（希望 ' + (+d[1]) + '/' + (+d[2]) + '）'; }
+            return s;
+        }
+        function text() {
+            var L = ['A娜您好，我想預訂 A. cake：'];
+            lines().forEach(function (l) {
+                if (!l.sub) L.push('・' + l.t + ' × ' + l.q);
+                else { L.push('・' + l.t + '（共 ' + l.q + '）'); l.sub.forEach(function (x) { L.push('　' + x); }); }
+            });
+            L.push('', '取貨方式：' + howText());
+            if (pick() === 'market' && mSel.value) L.push('市集：' + mSel.value);
+            if (nameI.value.trim()) L.push('訂購姓名：' + nameI.value.trim());
+            if (telI.value.trim()) L.push('手機：' + telI.value.trim());
+            if (noteI.value.trim()) L.push('備註：' + noteI.value.trim());
+            L.push('', '麻煩確認數量、價格與時間，謝謝！');
+            return L.join('\n');
+        }
+        var sumList = $('.aco_sum_list'), sumMeta = $('.aco_sum_meta'), sumN = $('.aco_sum_n');
+        function render() {
+            if (!picks) return;
+            var L = lines(), n = bag.count();
+            sumN.textContent = n ? '共 ' + n + ' 件' : '';
+            sumList.innerHTML = L.length ? L.map(function (l) {
+                return '<li><span>' + esc(l.t) + (l.sub ? '<br><small>' + esc(l.sub.join('、')) + '</small>' : '') + '</span><b>× ' + l.q + '</b></li>';
+            }).join('') : '<li class="is-empty">還沒有選品項</li>';
+            var meta = '';
+            if (reached >= 2) meta += '<dt>取貨</dt><dd>' + esc(howText()) + (pick() === 'market' && mSel.value ? '<br>' + esc(mSel.value) : '') + '</dd>';
+            if (reached >= 3 && nameI.value.trim()) meta += '<dt>姓名</dt><dd>' + esc(nameI.value.trim()) + '</dd>';
+            sumMeta.innerHTML = meta;
+            $('.aco_pre').textContent = text();
+        }
+
+        /* 清單變動：更新品項列表、口味數量 */
+        bag.on(function (items) {
+            itemsEl.innerHTML = items.map(function (it) {
+                return '<li data-key="' + esc(it.key) + '"><img src="' + esc(it.img) + '" alt="" width="54" height="54" loading="lazy"><div><b>' + esc(it.name) + '</b>' + (it.opt ? '<small>' + esc(it.opt) + '</small>' : '') + '</div>' +
+                    window.acQtyHtml(it.qty, 'sm') + '<button class="ac_bag_del" type="button">移除</button></li>';
+            }).join('');
+            emptyEl.hidden = items.length > 0;
+            $('.aco_clear_row').hidden = !items.length;
+            if (items.length) $('[data-err="items"]').hidden = true;
+            [].forEach.call(flv.querySelectorAll('[data-flv]'), function (c) {
+                var q = bag.qty('classic|' + c.getAttribute('data-flv'));
+                c.classList.toggle('is-on', q > 0); c.querySelector('b').textContent = q;
+            });
+            /* 清單被清空時，回到第 1 步 */
+            if (!items.length && step > 1 && picks) go(1, false);
+            render();
+        });
+
+        /* ---------- 傳送 ---------- */
+        function fallback(s) {
+            var ta = document.createElement('textarea'); ta.value = s; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;opacity:0;top:0';
+            document.body.appendChild(ta); ta.select(); var ok = false; try { ok = document.execCommand('copy'); } catch (e) {} ta.remove(); return ok;
+        }
+        function copy() {
+            var s = text();
+            function done(ok) {
+                $('.aco_done').hidden = !ok;
+                window.acToast(ok ? '已複製訊息，貼上送出就完成' : '請長按上方文字手動複製', false);
+            }
+            if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(s).then(function () { done(true); }, function () { done(fallback(s)); });
+            else done(fallback(s));
+        }
+        [].forEach.call(document.querySelectorAll('.aco_go'), function (a) { a.addEventListener('click', copy); });
+        $('.aco_copy').addEventListener('click', copy);
+        $('.aco_form').addEventListener('submit', function (e) { e.preventDefault(); });
+
+        /* 從其他頁帶 ?pick=market 進來：預選取貨方式 */
+        var p0 = new URL(location.href).searchParams.get('pick');
+        if (p0 && p0 !== '711') setPick(p0); else showSub();
+        go(1, false);
+    })();
+</script>
+</body>
+</html>

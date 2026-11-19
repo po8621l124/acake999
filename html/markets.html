@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>出攤日程｜全台市集司康攤位・現場預留｜A. cake 台中司康</title>
+	<!-- Google Analytics（GA4）：拿到評估 ID 後再加上 -->
+	<link rel="preload" as="image" href="../image/acake/h_forest.webp" media="(min-width: 769px)" fetchpriority="high">
+	<link rel="preload" as="image" href="../image/acake/960/m_stockists.webp" media="(max-width: 768px)" fetchpriority="high">
+	<link rel="icon" href="../image/icon/icon-48.png" sizes="48x48" type="image/png">
+	<link rel="icon" href="../image/icon/icon-96.png" sizes="96x96" type="image/png">
+	<link rel="icon" href="../image/icon/icon-192.png" sizes="192x192" type="image/png">
+	<link rel="apple-touch-icon" href="../image/icon/icon-180.png">
+	<meta name="description" content="A. cake 近期出攤日程：台中、台南、彰化、台北、高雄等地市集。出攤前私訊口味、數量、姓名與電話，即可先預留司康。">
+	<link rel="canonical" href="https://po8621l124.github.io/acake999/html/markets.html">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="A. cake ‘ scones">
+	<meta property="og:locale" content="zh_TW">
+	<meta property="og:title" content="出攤日程｜A. cake 台中司康">
+	<meta property="og:description" content="全台市集出攤日程，出攤前私訊即可先預留司康。">
+	<meta property="og:url" content="https://po8621l124.github.io/acake999/html/markets.html">
+	<meta property="og:image" content="https://po8621l124.github.io/acake999/image/acake/og.jpg">
+	<meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=LXGW+WenKai+TC:wght@400;700&display=swap" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=LXGW+WenKai+TC:wght@400;700&display=swap"></noscript>
+    <link rel="stylesheet" href="../css/ac_common.css">
+<style>
+/* ===== 出攤日程 acm_ ===== */
+
+/* b 即將出攤（票根列表） */
+.acm_b{padding: calc(var(--pdy) * 1.1) var(--pdx) var(--pdy);}
+.acm_b01{max-width: 1400px;margin: auto;display: grid;grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);gap: 40px clamp(40px, 5vw, 90px);align-items: start;}
+.acm_b01_l{position: sticky;top: 120px;display: flex;flex-direction: column;align-items: flex-start;gap: 22px;}
+.hs_box .acm_b01_l > p{color: var(--colorText-sub);}
+.acm_tip{align-self: stretch;padding: 24px 26px;border-radius: 24px;background: var(--color-bg2);display: flex;flex-direction: column;gap: 10px;}
+.hs_box .acm_tip b{font-family: var(--Kaifont);font-weight: 700;font-size: var(--f20);letter-spacing: .1em;}
+.acm_tip ol{counter-reset: tp;display: flex;flex-direction: column;gap: 6px;}
+.hs_box .acm_tip li{counter-increment: tp;display: flex;gap: 10px;font-size: var(--f15);}
+.hs_box .acm_tip li::before{content: counter(tp);flex: none;width: 24px;height: 24px;margin-top: 3px;border-radius: 50%;background: var(--color-Main);color: #fff;font-family: var(--Fraufont);font-weight: 700;font-size: 13px;line-height: 24px;text-align: center;}
+.hs_box .acm_tip small{font-size: var(--f14);color: var(--colorText-sub);}
+.acm_up .ac_mk{background: #fff;box-shadow: 0 10px 30px -24px rgba(var(--rgb_cocoa),.7);}
+.hs_box .acm_none{padding: 30px;border-radius: 22px;background: var(--color-bg2);color: var(--colorText-sub);}
+
+/* c 走過的市集 */
+.acm_c{padding: calc(var(--pdy) * 1.1) var(--pdx);background: var(--color-bg2);border-radius: 48px;margin: 0 clamp(0px, 1.5vw, 24px) var(--pdy);}
+.acm_c01{max-width: 1400px;margin: auto;}
+.acm_c01_head{display: flex;justify-content: space-between;align-items: flex-end;gap: 24px;flex-wrap: wrap;margin-bottom: 40px;}
+.hs_box .acm_c01_head > p{max-width: 460px;color: var(--colorText-sub);}
+.acm_c02{display: grid;grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);gap: 40px clamp(40px, 5vw, 90px);align-items: start;}
+.acm_gal{position: sticky;top: 110px;display: grid;grid-template-columns: 1fr 1fr;gap: 14px;}
+.acm_gal figure{border-radius: 24px;overflow: hidden;}
+.acm_gal figure:first-child{grid-column: 1 / -1;border-radius: 999px 999px 24px 24px;}
+.acm_gal img{width: 100%;height: auto;aspect-ratio: 4 / 5;object-fit: cover;}
+.acm_gal figure:first-child img{aspect-ratio: 1 / 1;}
+.acm_past{display: flex;flex-direction: column;gap: 8px;}
+.acm_past li{display: grid;grid-template-columns: auto minmax(0, 1fr);gap: 2px 18px;align-items: center;padding: 14px 20px;border-radius: 18px;background: #fff;}
+.acm_past li > :not(time){min-width: 0;}
+.hs_box .acm_past time{grid-row: span 2;align-self: center;padding: 4px 12px;border-radius: 20px;background: var(--color-butter);font-family: var(--Fraufont);font-weight: 600;font-size: var(--f14);letter-spacing: .02em;white-space: nowrap;}
+.hs_box .acm_past b{font-family: var(--Kaifont);font-weight: 700;font-size: var(--f16);letter-spacing: .06em;}
+.hs_box .acm_past span{font-size: var(--f14);color: var(--colorText-sub);}
+
+/* --- Media Queries --- */
+@media (max-width: 1440px) {
+}
+@media (max-width: 1024px) {
+    /* 照片改成清單上方一排三張，清單排兩欄 */
+    .acm_c02{grid-template-columns: 1fr;gap: 20px;}
+    .acm_gal{position: static;grid-template-columns: repeat(3, 1fr);gap: 12px;}
+    .acm_gal figure:first-child{grid-column: auto;border-radius: 999px 999px 20px 20px;}
+    .acm_gal figure{border-radius: 20px;}
+    .acm_gal img, .acm_gal figure:first-child img{aspect-ratio: 4 / 3;}
+    .acm_past{display: grid;grid-template-columns: repeat(2, 1fr);gap: 10px;}
+    .acm_past li{grid-template-columns: 1fr;align-content: start;padding: 16px 18px;}
+    .hs_box .acm_past time{grid-row: auto;justify-self: start;margin-bottom: 6px;}
+}
+@media (max-width: 992px) {
+    .acm_b01{grid-template-columns: 1fr;}
+    .acm_b01_l{position: static;}
+}
+@media (max-width: 768px) {
+    .acm_c{border-radius: 32px;}
+    .acm_gal img, .acm_gal figure:first-child img{aspect-ratio: 1 / 1;}
+}
+@media (max-width: 576px) {
+    /* 清單單欄、緊湊：日期膠囊與名稱同一行 */
+    .acm_past{grid-template-columns: 1fr;gap: 8px;}
+    .acm_past li{grid-template-columns: auto minmax(0, 1fr);gap: 0 12px;padding: 12px 14px;border-radius: 16px;}
+    .hs_box .acm_past time{grid-row: span 2;align-self: start;margin: 2px 0 0;padding: 3px 10px;font-size: 12px;}
+    .hs_box .acm_past b{font-size: var(--f15);line-height: 1.6;}
+    .hs_box .acm_past span{font-size: 13px;}
+    .acm_gal{gap: 8px;}
+    .acm_gal figure, .acm_gal figure:first-child{border-radius: 14px;}
+    .acm_gal figure:first-child{border-radius: 999px 999px 14px 14px;}
+}
+@media (max-width: 480px) {
+    .acm_tip{padding: 20px;}
+}
+@media (max-width: 380px) {
+    .acm_past li{grid-template-columns: 1fr;}
+    .hs_box .acm_past time{grid-row: auto;justify-self: start;margin-bottom: 4px;}
+}
+</style>
+</head>
+<body>
+
+<script src="../js/ac_layout.js" data-part="header"></script>
+
+<div class="hs_box">
+<main id="main">
+
+    <section class="ac_banner" style="--bn_img:url(../image/acake/h_forest.webp);--bn_pos:center 62%;--bn_img_m:url(../image/acake/960/m_stockists.webp);--bn_pos_m:center 40%">
+        <div class="ac_banner_bg"></div>
+        <div class="ac_banner_in">
+            <div data-animate-in="up">
+                <div class="ac_en">Markets</div>
+                <h1>出攤日程</h1>
+            </div>
+            <ol class="ac_crumb" data-animate-in="up"><li><a href="index.html">首頁</a></li><li><span>出攤日程</span></li></ol>
+        </div>
+    </section>
+
+    <section class="acm_b" id="upcoming">
+        <div class="acm_b01">
+            <div class="acm_b01_l">
+                <div class="ac_title" data-animate-in="left">
+                    <div class="ac_en">Upcoming</div>
+                    <h2>即將出攤</h2>
+                </div>
+                <p data-animate-in="up">帶著司康走遍全台。每一場的口味都會依季節與大家許願調整，出攤前會在 IG 公告當場口味。</p>
+                <div class="acm_tip" data-animate-in="up">
+                    <b>想吃的口味，先預留</b>
+                    <ol><li>到 IG 看當場的口味清單</li><li>私訊「口味、數量、訂購姓名、電話」</li><li>到攤位報名字直接取</li></ol>
+                    <small>市集若遇天候調整，以 IG 公告為準。</small>
+                </div>
+                <div class="ac_btns" data-animate-in="up">
+                    <a class="ac_btn fill" href="order.html?pick=market#helper"><span>整理預留訊息</span><i></i></a>
+                    <a class="ac_btn" href="https://www.instagram.com/acake999/" target="_blank" rel="noopener"><span>看 IG 公告</span><i></i></a>
+                </div>
+            </div>
+            <div>
+                <!-- 由 render.py 依 data/markets.json 產生；頁面會再依今天日期重排 -->
+                <ul class="ac_mks acm_up" data-animate-in="up"><!--markets:upcoming-->
+                <li class="ac_mk" data-start="2026-11-20" data-end="2026-11-22"><div class="ac_mk_date"><b>11.20</b><span>– 22</span><i>週五–日</i></div><div class="ac_mk_txt"><span class="ac_mk_city">臺南</span><h3>森之市｜2026 珈琲與花物語・第四回</h3><p>水交社眷村文化園區・12:00–18:00</p><small>免費入場</small></div><span class="ac_mk_when" aria-hidden="true"></span></li>
+                <li class="ac_mk" data-start="2026-11-28" data-end="2026-11-29"><div class="ac_mk_date"><b>11.28</b><span>– 29</span><i>週六–日</i></div><div class="ac_mk_txt"><span class="ac_mk_city">彰化</span><h3>森之市｜2026 香菜市集</h3><p>員林園・13:00–18:00</p><small>香菜主題・免費入場</small></div><span class="ac_mk_when" aria-hidden="true"></span></li>
+                <li class="ac_mk" data-start="2026-12-04" data-end="2026-12-06"><div class="ac_mk_date"><b>12.04</b><span>– 06</span><i>週五–日</i></div><div class="ac_mk_txt"><span class="ac_mk_city">臺北</span><h3>交換禮物主題市集</h3><p>臺北表演藝術中心</p><small>時間請見 IG 公告</small></div><span class="ac_mk_when" aria-hidden="true"></span></li>
+                <li class="ac_mk" data-start="2026-12-12" data-end="2026-12-13"><div class="ac_mk_date"><b>12.12</b><span>– 13</span><i>週六–日</i></div><div class="ac_mk_txt"><span class="ac_mk_city">高雄</span><h3>聖誕主題市集</h3><p>高雄市立美術館</p><small>時間請見 IG 公告</small></div><span class="ac_mk_when" aria-hidden="true"></span></li>
+                <li class="ac_mk" data-start="2026-12-19" data-end="2026-12-20"><div class="ac_mk_date"><b>12.19</b><span>– 20</span><i>週六–日</i></div><div class="ac_mk_txt"><span class="ac_mk_city">臺南</span><h3>年末市集</h3><p>地點請見 IG 公告</p></div><span class="ac_mk_when" aria-hidden="true"></span></li>
+            <!--/markets:upcoming--></ul>
+                <p class="acm_none" hidden>下一檔市集還在安排中，請追蹤 IG 等最新公告。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="acm_c">
+        <div class="acm_c01">
+            <div class="acm_c01_head">
+                <div class="ac_title" data-animate-in="left">
+                    <div class="ac_en">Past Markets</div>
+                    <h2>走過的市集</h2>
+                </div>
+                <p data-animate-in="up">從灰熊綠展的森林、松菸的展覽館，到高雄美術館的草地，謝謝每一位來攤位找 A. cake 的你。</p>
+            </div>
+            <div class="acm_c02">
+                <div class="acm_gal">
+                    <figure><img src="../image/acake/m_stall.webp" srcset="../image/acake/480/m_stall.webp 480w, ../image/acake/960/m_stall.webp 960w, ../image/acake/m_stall.webp 1440w" sizes="(max-width: 1024px) 33vw, 36vw" alt="A. cake 市集攤位的司康木櫃" width="1440" height="1440" loading="lazy"></figure>
+                    <figure><img src="../image/acake/480/m_street.webp" alt="鈴蘭通街區市集" width="480" height="640" loading="lazy"></figure>
+                    <figure><img src="../image/acake/480/m_island.webp" alt="市集攤位一角" width="480" height="640" loading="lazy"></figure>
+                </div>
+                <ol class="acm_past" data-animate-in="up"><!--markets:past-->
+                <li data-start="2026-11-13" data-end="2026-11-15"><time datetime="2026-11-13">2026.11.13 – 15</time><b>FOR STOCKISTS EXHIBITION（東京）首度來臺</b><span>臺北・松山文創園區 北向製菸工廠</span></li>
+                <li data-start="2026-11-06" data-end="2026-11-08"><time datetime="2026-11-06">2026.11.06 – 08</time><b>灰熊綠展｜秋天裡。海精靈の呢喃</b><span>苗栗・通霄海水浴場</span></li>
+                <li data-start="2026-08-14" data-end="2026-08-16"><time datetime="2026-08-14">2026.8.14 – 16</time><b>野陶祭 YA TA FESTIVAL｜心田中的印記</b><span>彰化・穀倉起藝文創園區</span></li>
+                <li data-start="2026-07-25" data-end="2026-07-26"><time datetime="2026-07-25">2026.7.25 – 26</time><b>小世界市集</b><span>臺中・臺灣民俗文物館</span></li>
+                <li data-start="2026-06-27" data-end="2026-06-27"><time datetime="2026-06-27">2026.6.27</time><b>2026 歷史復活節</b><span>臺北・臺北記憶倉庫</span></li>
+                <li data-start="2026-04-10" data-end="2026-04-12"><time datetime="2026-04-10">2026.4.10 – 12</time><b>好好手感微笑市集｜島國禮作 2026 島南</b><span>高雄・高雄市立美術館戶外廣場</span></li>
+                <li data-start="2026-03-28" data-end="2026-03-29"><time datetime="2026-03-28">2026.3.28 – 29</time><b>森之市 Mori Market｜喫茶菓子</b><span>嘉義・嘉義文創園區</span></li>
+                <li data-start="2026-02-27" data-end="2026-03-01"><time datetime="2026-02-27">2026.2.27 – 3.01</time><b>小蝸牛市集</b><span>臺北・松山文創園區</span></li>
+                <li data-start="2026-01-17" data-end="2026-01-18"><time datetime="2026-01-17">2026.1.17 – 18</time><b>良の日</b><span>高雄・高雄市立美術館廣場</span></li>
+                <li data-start="2026-01-10" data-end="2026-01-11"><time datetime="2026-01-10">2026.1.10 – 11</time><b>好好手感微笑市集</b><span>高雄・高雄市立美術館</span></li>
+            <!--/markets:past--></ol>
+            </div>
+        </div>
+    </section>
+
+    <section class="ac_cta">
+        <div class="ac_cta_in">
+            <div class="ac_title whi cen" data-animate-in="down">
+                <div class="ac_en">Can't Make It?</div>
+                <h2>來不了市集，<span class="ac_s">司康也能寄到你身邊</span></h2>
+            </div>
+            <p class="cen" data-animate-in="up">7-11 冷凍店到店，全台門市都能取貨。</p>
+            <div class="ac_btns" data-animate-in="up">
+                <a class="ac_btn gold fill" href="https://myship.7-11.com.tw/general/detail/GM2601282916278" target="_blank" rel="noopener"><span>7-11 賣貨便</span><i></i></a>
+                <a class="ac_btn gold" href="products.html#menu"><span>看商品</span><i></i></a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<script src="../js/ac_layout.js" data-part="footer"></script>
+</div>
+
+<script id="ac_markets" type="application/json"><!--markets:data-->[{"name":"森之市｜2026 珈琲與花物語・第四回","city":"臺南","place":"水交社眷村文化園區","start":"2026-11-20","end":"2026-11-22","hours":"12:00–18:00","note":"免費入場"},{"name":"森之市｜2026 香菜市集","city":"彰化","place":"員林園","start":"2026-11-28","end":"2026-11-29","hours":"13:00–18:00","note":"香菜主題・免費入場"},{"name":"交換禮物主題市集","city":"臺北","place":"臺北表演藝術中心","start":"2026-12-04","end":"2026-12-06","hours":"","note":"時間請見 IG 公告"},{"name":"聖誕主題市集","city":"高雄","place":"高雄市立美術館","start":"2026-12-12","end":"2026-12-13","hours":"","note":"時間請見 IG 公告"},{"name":"年末市集","city":"臺南","place":"地點請見 IG 公告","start":"2026-12-19","end":"2026-12-20","hours":"","note":""},{"name":"FOR STOCKISTS EXHIBITION（東京）首度來臺","city":"臺北","place":"松山文創園區 北向製菸工廠","start":"2026-11-13","end":"2026-11-15","hours":"11:00–18:00","note":"購票入場"},{"name":"灰熊綠展｜秋天裡。海精靈の呢喃","city":"苗栗","place":"通霄海水浴場","start":"2026-11-06","end":"2026-11-08","hours":"11:00–17:00","note":"購票入場"},{"name":"野陶祭 YA TA FESTIVAL｜心田中的印記","city":"彰化","place":"穀倉起藝文創園區","start":"2026-08-14","end":"2026-08-16","hours":"10:00–17:00","note":"主辦：灰熊綠展"},{"name":"小世界市集","city":"臺中","place":"臺灣民俗文物館","start":"2026-07-25","end":"2026-07-26","hours":"13:00–18:00","note":"榴槤杯子司康首發"},{"name":"2026 歷史復活節","city":"臺北","place":"臺北記憶倉庫","start":"2026-06-27","end":"","hours":"13:00–18:00","note":""},{"name":"好好手感微笑市集｜島國禮作 2026 島南","city":"高雄","place":"高雄市立美術館戶外廣場","start":"2026-04-10","end":"2026-04-12","hours":"13:00–19:00","note":"桑果夾心司康"},{"name":"森之市 Mori Market｜喫茶菓子","city":"嘉義","place":"嘉義文創園區","start":"2026-03-28","end":"2026-03-29","hours":"13:00–18:00","note":""},{"name":"小蝸牛市集","city":"臺北","place":"松山文創園區","start":"2026-02-27","end":"2026-03-01","hours":"12:00–17:00","note":""},{"name":"良の日","city":"高雄","place":"高雄市立美術館廣場","start":"2026-01-17","end":"2026-01-18","hours":"14:00–19:00","note":""},{"name":"好好手感微笑市集","city":"高雄","place":"高雄市立美術館","start":"2026-01-10","end":"2026-01-11","hours":"13:00–18:00","note":""}]<!--/markets:data--></script>
+<script src="../js/scrollfade.js"></script>
+<script src="../js/ac_common.js"></script>
+<script>
+    /* 依今天日期重新分成即將出攤／走過的市集 */
+    (function () {
+        var g = window.acMarkets(); if (!g) return;
+        var up = document.querySelector('.acm_up');
+        up.innerHTML = g.upcoming.map(window.acMkCard).join('');
+        up.hidden = !g.upcoming.length;
+        document.querySelector('.acm_none').hidden = g.upcoming.length > 0;
+        document.querySelector('.acm_past').innerHTML = g.past.map(window.acMkRow).join('');
+        window.acMarketWhen(up);
+    })();
+</script>
+</body>
+</html>
