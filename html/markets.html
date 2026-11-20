@@ -45,43 +45,6 @@
 .acm_up .ac_mk{background: #fff;box-shadow: 0 10px 30px -24px rgba(var(--rgb_cocoa),.7);}
 .hs_box .acm_none{padding: 30px;border-radius: 22px;background: var(--color-bg2);color: var(--colorText-sub);}
 
-/* map 市集地圖（Leaflet，捲到附近才載入） */
-.acm_map{padding: 0 var(--pdx) calc(var(--pdy) * 1.1);}
-.acm_map01{max-width: 1400px;margin: auto;}
-.acm_mapbox{position: relative;height: clamp(420px, 52vw, 600px);border-radius: 40px;overflow: hidden;background: var(--color-bg2);border: 6px solid #fff;box-shadow: 0 18px 40px -30px rgba(var(--rgb_cocoa),.8);}
-.acm_mapbox .leaflet-container{height: 100%;background: var(--color-bg2);font-family: inherit;}
-.acm_mapbox .leaflet-tile-pane{filter: sepia(.22) saturate(.85) brightness(1.03);}
-.acm_mapbox .leaflet-control-zoom{border: 0;box-shadow: 0 6px 18px -10px rgba(var(--rgb_cocoa),.7);border-radius: 18px;overflow: hidden;}
-.acm_mapbox .leaflet-control-zoom a{width: 38px;height: 38px;line-height: 38px;color: var(--colorText);font-family: var(--Fraufont);}
-.acm_mapbox .leaflet-control-attribution{font-size: 11px;background: rgba(255,251,243,.85);}
-.acm_mapbox .leaflet-popup-content-wrapper{border-radius: 20px;background: var(--color-bg);box-shadow: 0 14px 30px -14px rgba(var(--rgb_cocoa),.7);}
-.acm_mapbox .leaflet-popup-tip{background: var(--color-bg);}
-.acm_mapbox .leaflet-popup-content{margin: 16px 20px;font-size: 14px;line-height: 1.7;min-width: 200px;}
-.acm_mapbox .leaflet-container a.leaflet-popup-close-button{top: 6px;right: 8px;color: var(--colorText-sub);}
-.hs_box .acm_pop b{display: block;font-family: var(--Kaifont);font-size: 18px;letter-spacing: .1em;margin-bottom: 6px;}
-.hs_box .acm_pop p{margin: 0 0 4px;font-size: 14px;line-height: 1.6;}
-.acm_pop .is-home{color: var(--color-alt);font-weight: 700;}
-.acm_pop ul{margin: 0;padding: 0;list-style: none;display: flex;flex-direction: column;gap: 4px;}
-.hs_box .acm_pop li{display: flex;gap: 8px;font-size: 14px;line-height: 1.6;}
-.acm_pop time{flex: none;font-family: var(--Fraufont);font-weight: 600;color: var(--colorText-sub);}
-.acm_pop li.is-up time{color: var(--color-Main);}
-.hs_box .acm_pop small{font-size: 12px;display: block;margin-top: 6px;color: var(--colorText-sub);}
-/* 圖釘：膠囊＋細線，線的底端對準座標 */
-.acm_mapbox .leaflet-map-pane *{max-width: none;}   /* 全站 reset 的 max-width:100% 會讓圖釘、彈窗縮成 0 寬 */
-.acm_pin_wrap{width: max-content;}
-.acm_pin{display: flex;flex-direction: column;align-items: center;}
-.acm_pin span{display: flex;align-items: center;gap: 4px;padding: 5px 11px;border-radius: 999px;border: 2px solid #fff;background: var(--color-butter);color: var(--colorText);font-family: var(--Kaifont);font-weight: 700;font-size: 14px;line-height: 1.2;letter-spacing: .06em;white-space: nowrap;box-shadow: 0 6px 14px -6px rgba(var(--rgb_cocoa),.7);transition: transform .25s var(--ease);}
-.acm_pin span em{font-style: normal;font-family: var(--Fraufont);font-size: 12px;opacity: .8;}
-.acm_pin::after{content: '';width: 2px;height: 10px;background: rgba(var(--rgb_cocoa),.5);}
-.acm_pin.is-up span{background: var(--color-Main);color: #fff;}
-.acm_pin.is-home span{background: var(--color-alt);color: #fff;border-radius: 10px;font-family: var(--Cavfont);font-size: 17px;letter-spacing: .02em;}
-/* 臺中跟彰化太近：工作室圖釘線拉長、標籤往右，疊在彰化右上方 */
-.acm_pin.is-home{align-items: flex-start;}
-.acm_pin.is-home::after{height: 34px;margin-left: 10px;}
-.leaflet-marker-icon:hover .acm_pin span{transform: translateY(-3px);}
-.acm_mapbox .leaflet-marker-icon:focus-visible{outline: none;}
-.acm_mapbox .leaflet-marker-icon:focus-visible .acm_pin span{outline: 3px solid var(--colorText);outline-offset: 2px;}
-
 /* c 走過的市集 */
 .acm_c{padding: calc(var(--pdy) * 1.1) var(--pdx);background: var(--color-bg2);border-radius: 48px;margin: 0 clamp(0px, 1.5vw, 24px) var(--pdy);}
 .acm_c01{max-width: 1400px;margin: auto;}
@@ -120,7 +83,6 @@
 }
 @media (max-width: 768px) {
     .acm_c{border-radius: 32px;}
-    .acm_mapbox{height: 460px;border-radius: 28px;border-width: 4px;}
     .acm_gal img, .acm_gal figure:first-child img{aspect-ratio: 1 / 1;}
 }
 @media (max-width: 576px) {
@@ -194,12 +156,6 @@
         </div>
     </section>
 
-    <section class="acm_map" id="map">
-        <div class="acm_map01">
-            <div class="acm_mapbox" data-animate-in="up" role="region" aria-label="市集地圖，點城市看當地的市集"></div>
-        </div>
-    </section>
-
     <section class="acm_c">
         <div class="acm_c01">
             <div class="acm_c01_head">
@@ -263,64 +219,7 @@
         document.querySelector('.acm_none').hidden = g.upcoming.length > 0;
         document.querySelector('.acm_past').innerHTML = g.past.map(window.acMkRow).join('');
         window.acMarketWhen(up);
-        acmMap(g);
     })();
-
-    /* 市集地圖：依城市放圖釘（只到城市，不是場地的精確位置）。捲到附近才載入 Leaflet */
-    function acmMap(g) {
-        var box = document.querySelector('.acm_mapbox'); if (!box) return;
-        var XY = {
-            '臺北': [25.04, 121.56], '新北': [25.01, 121.46], '基隆': [25.13, 121.74], '桃園': [24.99, 121.30], '新竹': [24.80, 120.97],
-            '苗栗': [24.56, 120.82], '臺中': [24.15, 120.67], '彰化': [24.07, 120.54], '南投': [23.91, 120.68], '雲林': [23.71, 120.43],
-            '嘉義': [23.48, 120.45], '臺南': [22.99, 120.20], '高雄': [22.63, 120.30], '屏東': [22.67, 120.49], '宜蘭': [24.76, 121.75],
-            '花蓮': [23.98, 121.60], '臺東': [22.76, 121.14], '澎湖': [23.57, 119.58], '金門': [24.43, 118.32], '馬祖': [26.16, 119.95]
-        };
-        var e = window.acEsc, cities = {};
-        function city(m) { var c = String(m.city || '').trim().replace(/台/g, '臺').replace(/[市縣]$/, ''); return XY[c] ? c : null; }
-        function add(m, up) { var c = city(m); if (!c) return; (cities[c] = cities[c] || { up: [], past: [] })[up ? 'up' : 'past'].push(m); }
-        g.upcoming.forEach(function (m) { add(m, true); });
-        g.past.forEach(function (m) { add(m, false); });
-        cities['臺中'] = cities['臺中'] || { up: [], past: [] };
-        cities['臺中'].home = true;
-        function row(m, up) { return '<li' + (up ? ' class="is-up"' : '') + '><time>' + window.acMkDate(m).a + '</time><span>' + e(m.name) + '</span></li>'; }
-
-        function build() {
-            var L = window.L;
-            var map = L.map(box, {
-                scrollWheelZoom: false,          /* 不搶頁面捲動 */
-                dragging: !L.Browser.mobile,     /* 手機單指照常捲頁，用 +／− 或兩指縮放 */
-                tap: false, zoomSnap: .5,
-                maxBounds: [[21.3, 117.8], [26.6, 122.6]], minZoom: 6.5, maxZoom: 13
-            });
-            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 19,
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
-            }).addTo(map);
-            /* 先定好視野，圖釘加上去才會出現在畫面上、量得到尺寸 */
-            map.fitBounds(Object.keys(cities).map(function (c) { return XY[c]; }), { padding: [50, 50], maxZoom: 8 });
-            Object.keys(cities).forEach(function (c) {
-                var v = cities[c], n = v.up.length + v.past.length;
-                var cls = v.up.length ? 'is-up' : (v.home ? 'is-home' : 'is-past');
-                var label = v.up.length ? c + '<em>' + window.acMkDate(v.up[0]).a + '</em>' : (v.home ? 'A. cake' : c + (n > 1 ? '<em>×' + n + '</em>' : ''));
-                var html = '<div class="acm_pop"><b>' + c + '</b>' +
-                    (v.home ? '<p class="is-home">大里工作室・預約自取</p>' : '') +
-                    (n ? '<ul>' + v.up.map(function (m) { return row(m, true); }).join('') + v.past.slice(0, 4).map(function (m) { return row(m, false); }).join('') + '</ul>' : '') +
-                    (v.past.length > 4 ? '<small>還有 ' + (v.past.length - 4) + ' 場，見下方「走過的市集」</small>' : '') + '</div>';
-                var mk = L.marker(XY[c], {
-                    icon: L.divIcon({ className: 'acm_pin_wrap', html: '<div class="acm_pin ' + cls + '"><span>' + label + '</span></div>', iconSize: null }),
-                    title: c, keyboard: true, riseOnHover: true, zIndexOffset: v.up.length ? 1000 : (v.home ? 500 : 0)
-                }).bindPopup(html, { autoPanPadding: [30, 30], offset: [0, -34] }).addTo(map);
-                /* 圖釘寬度不固定：加上去之後量尺寸，讓細線底端對準座標 */
-                var el = mk.getElement();
-                el.style.marginLeft = (cls === 'is-home' ? -11 : -el.offsetWidth / 2) + 'px';
-                el.style.marginTop = -el.offsetHeight + 'px';
-            });
-        }
-        function go() { window.acLoad('../js/leaflet.js', '../css/leaflet.css').then(build, function () { box.innerHTML = '<p class="acm_none">地圖載入失敗，請重新整理頁面。</p>'; }); }
-        if (!('IntersectionObserver' in window)) return go();
-        var io = new IntersectionObserver(function (en) { if (en[0].isIntersecting) { io.disconnect(); go(); } }, { rootMargin: '400px 0px' });
-        io.observe(box);
-    }
 </script>
 </body>
 </html>
