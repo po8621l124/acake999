@@ -1,11 +1,16 @@
 {
-  "_說明": "商品資料。新增商品：在 products 加一筆，順序＝網站上的順序。category 要對應 categories 的 id。status：regular＝常態供應、seasonal＝季節／活動限定、ended＝本季已結束（卡片會顯示「本季已結束」）。images 第一張是封面，存檔後系統會自動轉 webp、補 width／height。featured: true 會出現在首頁「招牌選品」。myship: true 表示 7-11 賣貨便有上架，網站會顯示「7-11 可直接下單」，否則顯示「需私訊預訂」。desc 裡的 \\n\\n 是分段。options＝客人可直接點選的規格（例如 三入／六入、果醬口味），每個可填價格，會帶進私訊清單與訊息；flavors 的 price 是該口味單價。",
+  "_說明": "商品資料。新增商品：在 products 加一筆，順序＝網站上的順序。category 要對應 categories 的 id。status：regular＝常態供應、seasonal＝季節／活動限定、ended＝本季已結束（卡片會顯示「本季已結束」）。images 第一張是封面，存檔後系統會自動轉 webp、補 width／height。featured: true 會出現在首頁「招牌選品」。myship: true 表示 7-11 賣貨便有上架，網站會顯示「7-11 可直接下單」，否則顯示「需私訊預訂」。desc 裡的 \\n\\n 是分段。options＝客人可直接點選的規格（例如 三入／六入、果醬口味），每個可填價格，會帶進私訊清單與訊息；flavors 的 price 是該口味單價。 flavors 每個口味會在「司康」分類各自成為一張卡：有照片就用照片，沒照片顯示口味色塊；summary／desc 沒填就用英式經典司康的介紹。",
   "order_url": "https://myship.7-11.com.tw/general/detail/GM2601282916278",
   "categories": [
     {
       "id": "scone",
-      "name": "經典司康",
-      "en": "Classic Scones"
+      "name": "司康",
+      "en": "Scones"
+    },
+    {
+      "id": "swirl",
+      "name": "花捲司康",
+      "en": "Swirl Scones"
     },
     {
       "id": "special",
@@ -24,8 +29,8 @@
     },
     {
       "id": "pantry",
-      "name": "果醬・橙品",
-      "en": "Jam & Citrus"
+      "name": "果醬・其他",
+      "en": "Jam & More"
     },
     {
       "id": "gift",
@@ -36,99 +41,154 @@
   "flavors": [
     {
       "name": "原味",
-      "group": "經典"
+      "group": "經典",
+      "en": "Plain"
     },
     {
       "name": "伯爵茶",
-      "group": "經典"
+      "group": "經典",
+      "en": "Earl Grey"
     },
     {
       "name": "純粹蜂蜜",
-      "group": "經典"
+      "group": "經典",
+      "en": "Honey"
     },
     {
       "name": "蔓越莓",
-      "group": "經典"
+      "group": "經典",
+      "en": "Cranberry"
     },
     {
       "name": "藍莓",
-      "group": "經典"
+      "group": "經典",
+      "en": "Blueberry"
     },
     {
       "name": "蘭姆酒葡萄乾",
-      "group": "經典"
+      "group": "經典",
+      "en": "Rum Raisin"
     },
     {
       "name": "英式經典奶酥",
-      "group": "經典"
+      "group": "經典",
+      "en": "Classic Crumble"
     },
     {
       "name": "鹹乳酪",
-      "group": "經典"
+      "group": "經典",
+      "en": "Savory Cheese"
     },
     {
       "name": "蜜漬橙片",
-      "group": "果香"
+      "group": "果香",
+      "en": "Candied Orange",
+      "summary": "橙片低溫蜜漬八天，果香與微苦韻味融進奶香裡。",
+      "desc": "香橙低溫蜜漬，鎖住果香與微苦韻味，與英式司康的奶香酥鬆完美交融。\n\n橙皮的清新果酸緩緩綻放，讓英式經典司康多了一份法式優雅與成熟風味。每一批蜜漬橙片都要經過八天的照顧，冬季才會正常供應。",
+      "images": [
+        {
+          "src": "p_orange.webp",
+          "width": 1440,
+          "height": 1440
+        },
+        {
+          "src": "h_orange.webp",
+          "width": 1440,
+          "height": 1440
+        }
+      ],
+      "instagram": "DR11BtokToJ",
+      "featured": true
     },
     {
       "name": "草莓乳酪果餡",
-      "group": "果香"
+      "group": "果香",
+      "en": "Strawberry Cream Cheese"
     },
     {
       "name": "綜合莓果奇亞籽乳酪",
-      "group": "果香"
+      "group": "果香",
+      "en": "Mixed Berry Chia Cheese"
     },
     {
       "name": "桑椹",
-      "group": "果香"
+      "group": "果香",
+      "en": "Mulberry"
     },
     {
       "name": "英式奶酥蘋果派",
-      "group": "果香"
+      "group": "果香",
+      "en": "Apple Crumble Pie"
     },
     {
       "name": "草莓花生無違和",
-      "group": "果香"
+      "group": "果香",
+      "en": "Strawberry Peanut"
     },
     {
       "name": "滿嘴巧克力",
-      "group": "可可・堅果"
+      "group": "可可・堅果",
+      "en": "Double Chocolate",
+      "summary": "冬天才有的濃郁可可，巧克力控的指定款。",
+      "desc": "有冬天的感覺，才會安排滿嘴巧克力出場。可可的厚度一口接一口，是市集上許多朋友指定要預留的口味。",
+      "images": [
+        {
+          "src": "p_choco.webp",
+          "width": 1440,
+          "height": 1439
+        },
+        {
+          "src": "p_choco2.webp",
+          "width": 1440,
+          "height": 1440
+        }
+      ],
+      "instagram": "DTNX5_nEX8L"
     },
     {
       "name": "巧克力",
-      "group": "可可・堅果"
+      "group": "可可・堅果",
+      "en": "Chocolate"
     },
     {
       "name": "黑森林",
-      "group": "可可・堅果"
+      "group": "可可・堅果",
+      "en": "Black Forest"
     },
     {
       "name": "焦糖核桃",
-      "group": "可可・堅果"
+      "group": "可可・堅果",
+      "en": "Caramel Walnut"
     },
     {
       "name": "海鹽栗子",
-      "group": "可可・堅果"
+      "group": "可可・堅果",
+      "en": "Sea Salt Chestnut"
     },
     {
       "name": "咖啡奶油乾酪杏仁脆片",
-      "group": "可可・堅果"
+      "group": "可可・堅果",
+      "en": "Coffee Cream Cheese Almond"
     },
     {
       "name": "純粹抹茶",
-      "group": "茶香"
+      "group": "茶香",
+      "en": "Matcha"
     },
     {
       "name": "泰式奶茶",
-      "group": "茶香"
+      "group": "茶香",
+      "en": "Thai Milk Tea"
     },
     {
       "name": "鐵觀音",
-      "group": "茶香"
+      "group": "茶香",
+      "en": "Tieguanyin Oolong"
     },
     {
       "name": "蜜橙烏龍茶",
-      "group": "茶香"
+      "group": "茶香",
+      "en": "Orange Oolong"
     }
   ],
   "products": [
@@ -176,76 +236,6 @@
       ]
     },
     {
-      "id": "orange",
-      "name": "蜜漬橙片司康",
-      "en": "Candied Orange Scone",
-      "category": "scone",
-      "status": "regular",
-      "featured": true,
-      "myship": true,
-      "price": "NT$ 70 起",
-      "summary": "橙片低溫蜜漬八天，果香與微苦韻味融進奶香裡。",
-      "desc": "香橙低溫蜜漬，鎖住果香與微苦韻味，與英式司康的奶香酥鬆完美交融。\n\n橙皮的清新果酸緩緩綻放，讓英式經典司康多了一份法式優雅與成熟風味。每一批蜜漬橙片都要經過八天的照顧，冬季才會正常供應。",
-      "specs": [
-        {
-          "name": "供應",
-          "value": "冬季為主，依蜜漬橙片製作進度"
-        },
-        {
-          "name": "取貨",
-          "value": "7-11 冷凍店到店／大里工作室自取／市集預留"
-        }
-      ],
-      "instagram": "DR11BtokToJ",
-      "images": [
-        {
-          "src": "p_orange.webp",
-          "width": 1440,
-          "height": 1440
-        },
-        {
-          "src": "h_orange.webp",
-          "width": 1440,
-          "height": 1440
-        }
-      ]
-    },
-    {
-      "id": "choco",
-      "name": "滿嘴巧克力司康",
-      "en": "Double Chocolate Scone",
-      "category": "scone",
-      "status": "regular",
-      "featured": false,
-      "myship": true,
-      "price": "NT$ 70 起",
-      "summary": "冬天才有的濃郁可可，巧克力控的指定款。",
-      "desc": "有冬天的感覺，才會安排滿嘴巧克力出場。可可的厚度一口接一口，是市集上許多朋友指定要預留的口味。",
-      "specs": [
-        {
-          "name": "供應",
-          "value": "天氣轉涼後供應"
-        },
-        {
-          "name": "取貨",
-          "value": "7-11 冷凍店到店／大里工作室自取／市集預留"
-        }
-      ],
-      "instagram": "DTNX5_nEX8L",
-      "images": [
-        {
-          "src": "p_choco.webp",
-          "width": 1440,
-          "height": 1439
-        },
-        {
-          "src": "p_choco2.webp",
-          "width": 1440,
-          "height": 1440
-        }
-      ]
-    },
-    {
       "id": "spicy",
       "name": "辣起司司康",
       "en": "Spicy Cheese Scone",
@@ -283,7 +273,7 @@
       "id": "swirl",
       "name": "花捲司康系列",
       "en": "Swirl Scones",
-      "category": "scone",
+      "category": "swirl",
       "status": "regular",
       "featured": false,
       "myship": true,

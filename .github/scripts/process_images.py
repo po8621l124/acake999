@@ -12,7 +12,7 @@ with open(DATA, encoding='utf-8') as f:
     data = json.load(f)
 before = json.dumps(data, ensure_ascii=False)
 
-for p in data['products']:
+for p in data['products'] + data.get('flavors', []):
     for im_ref in p.get('images') or []:
         name = os.path.basename(str(im_ref.get('src') or ''))
         if not name:

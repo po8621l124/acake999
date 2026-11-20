@@ -172,10 +172,12 @@
         var m = /^NT\$\s*([\d,]+)$/.exec(String(p.price || '').trim());
         return m ? +m[1].replace(/,/g, '') : null;
     };
-    /* 清單裡的小字：規格＋單價 */
-    window.acOptLine = function (it) {
-        var u = window.acUnit(it);
-        return [it.opt, u ? window.acMoney(u) : ''].filter(Boolean).join('・');
+    /* 清單裡的價格小字：單價；沒有規格也沒有單一價格時，用商品的價格文字（例如 NT$ 70 起） */
+    window.acPriceText = function (it) {
+        var u = window.acUnit(it), D = window.AC_DATA;
+        if (u) return window.acMoney(u);
+        var p = !it.opt && D && D.products.filter(function (x) { return x.id === it.id; })[0];
+        return (p && p.price) || '';
     };
 
     var KEY = 'ac_bag_v1', subs = [];
@@ -230,14 +232,27 @@
         return '<div class="ac_qty ' + (cls || '') + '"><button type="button" data-d="-1" aria-label="減少">−</button><output>' + q + '</output><button type="button" data-d="1" aria-label="增加"' + (q >= 99 ? ' disabled' : '') + '>+</button></div>';
     }
     window.acQtyHtml = qtyHtml;
+    /* 清單依商品分組：同一個商品的不同口味／規格放在同一塊，每列各自調數量 */
+    window.acBagHtml = function (items) {
+        var grp = [], at = {};
+        items.forEach(function (it) {
+            if (!(it.id in at)) { at[it.id] = grp.length; grp.push({ name: it.name, img: it.img, rows: [] }); }
+            grp[at[it.id]].rows.push(it);
+        });
+        return grp.map(function (g) {
+            var n = g.rows.reduce(function (a, b) { return a + b.qty; }, 0);
+            return '<li class="ac_bgrp"><img src="' + esc(g.img) + '" alt="" width="56" height="56" loading="lazy"><div>' +
+                '<b>' + esc(g.name) + (g.rows.length > 1 ? '<em>共 ' + n + '</em>' : '') + '</b><ul class="ac_bgrp_rows">' +
+                g.rows.map(function (it) {
+                    return '<li data-key="' + esc(it.key) + '"><small>' + (it.opt ? '<span>' + esc(it.opt) + '</span>' : '') + (window.acPriceText(it) ? '<i>' + esc(window.acPriceText(it)) + '</i>' : '') + '</small>' + qtyHtml(it.qty, 'sm') + '<button class="ac_bag_del" type="button" aria-label="移除 ' + esc(it.name + (it.opt ? ' ' + it.opt : '')) + '">移除</button></li>';
+                }).join('') + '</ul></div></li>';
+        }).join('');
+    };
     if (bagDw) {
         wireDrawer(bagDw);
         var list = bagDw.querySelector('.ac_bag_list'), empty = bagDw.querySelector('.ac_bag_empty'), go = bagDw.querySelector('.ac_bag_go');
         window.acBag.on(function (items) {
-            list.innerHTML = items.map(function (it) {
-                return '<li data-key="' + esc(it.key) + '"><img src="' + esc(it.img) + '" alt="" width="64" height="64" loading="lazy"><div><b>' + esc(it.name) + '</b>' + (window.acOptLine(it) ? '<small>' + esc(window.acOptLine(it)) + '</small>' : '') + '</div>' +
-                    '<div class="ac_bag_r">' + qtyHtml(it.qty, 'sm') + '<button class="ac_bag_del" type="button">移除</button></div></li>';
-            }).join('');
+            list.innerHTML = window.acBagHtml(items);
             empty.hidden = items.length > 0;
             go.hidden = items.length === 0;
             var n = window.acBag.count();
@@ -248,7 +263,7 @@
             });
         });
         list.addEventListener('click', function (e) {
-            var li = e.target.closest('li'); if (!li) return;
+            var li = e.target.closest('[data-key]'); if (!li) return;
             var key = li.getAttribute('data-key');
             var b = e.target.closest('[data-d]');
             if (b) window.acBag.set(key, window.acBag.qty(key) + (+b.getAttribute('data-d')));
@@ -287,7 +302,18 @@
     var STATUS = { regular: '常態供應', seasonal: '季節限定', ended: '本季已結束' };
     window.AC_DATA = DATA;
 
+    /* 沒照片的口味：色塊＋口味名稱（和 render.py 的 art() 同一組樣式） */
+    var SCONE = '<svg viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 34c0-13 10.7-22 24-22s24 9 24 22z"/><path d="M17 23c4-3 9.5-4.5 15-4.5S43 20 47 23"/><path d="M4 34h56"/></svg>';
+    window.acFlvArt = function (p) {
+        return '<div class="ac_flv_art is-g' + ((p.gi || 0) % 4) + '"><b>' + esc(p.name) + '</b>' + (p.en ? '<i>' + esc(p.en) + '</i>' : '') + SCONE + '</div>';
+    };
     function addProduct(p, n, opt) {
+        /* 口味卡：算在英式經典司康底下，口味當規格 */
+        if (p.parent && byId[p.parent]) {
+            var par = byId[p.parent];
+            opt = p.flavor;
+            p = { id: par.id, name: par.name, images: p.images.length ? p.images : par.images };
+        }
         var it = { id: p.id, name: p.name, opt: opt, img: window.acImg(p.images[0], 480) };
         it.price = window.acUnit(it);
         window.acBag.add(it, n);
@@ -303,7 +329,7 @@
         '<div class="ac_dw_in">' +
             '<button class="ac_dw_close" type="button" aria-label="關閉">' + window.AC_ICONS.close + '</button>' +
             '<div class="ac_dw_body">' +
-                '<div class="ac_dw_gal"><button class="ac_dw_zoom" type="button" aria-label="放大照片"><img src="" alt="" width="600" height="600"><i aria-hidden="true"></i></button></div>' +
+                '<div class="ac_dw_gal"><button class="ac_dw_zoom" type="button" aria-label="放大照片"><img src="" alt="" width="600" height="600"><i aria-hidden="true"></i></button><div class="ac_dw_art" hidden></div></div>' +
                 '<div class="ac_dw_thumbs"></div>' +
                 '<div class="ac_dw_txt"></div>' +
             '</div>' +
@@ -349,17 +375,21 @@
         var p = byId[id]; if (!p) return;
         curP = p; curQ = 1;
         gImg.removeAttribute('src');
+        /* 沒照片：顯示口味色塊 */
+        var noPic = !p.images.length, artEl = dw.querySelector('.ac_dw_art');
+        artEl.hidden = !noPic; dw.querySelector('.ac_dw_zoom').hidden = noPic;
+        artEl.innerHTML = noPic ? window.acFlvArt(p) : '';
         thumbs.innerHTML = p.images.length > 1 ? p.images.map(function (im, k) {
             return '<button type="button" aria-label="第 ' + (k + 1) + ' 張照片"><img src="' + window.acImg(im, 480) + '" alt="" loading="lazy"></button>';
         }).join('') : '';
         thumbs.hidden = p.images.length < 2;
-        setImg(0);
+        if (!noPic) setImg(0);
         var specs = (p.specs || []).map(function (s) { return '<dt>' + esc(s.name) + '</dt><dd>' + esc(s.value) + '</dd>'; }).join('');
         var links = '<a href="' + window.AC_LINKS.shop + '" target="_blank" rel="noopener">' + window.AC_ICONS.bag + '7-11 賣貨便</a>' +
             (p.instagram ? '<a href="https://www.instagram.com/p/' + esc(p.instagram) + '/" target="_blank" rel="noopener">' + window.AC_ICONS.ig + '看 IG 貼文</a>' : '');
         txt.innerHTML =
             '<span class="ac_tag' + (p.status !== 'regular' ? ' is-' + p.status : '') + '">' + STATUS[p.status] + '</span>' +
-            '<em>' + esc(p.en) + '</em><h2 id="ac_pdw_h">' + esc(p.name) + '</h2>' +
+            '<em>' + esc(p.en) + '</em><h2 id="ac_pdw_h">' + esc(p.name) + (p.parent ? '<small>司康</small>' : '') + '</h2>' +
             (p.price ? '<span class="ac_price">' + esc(p.price) + '</span>' : '<span class="ac_price is-ask">價格請私訊詢問</span>') +
             (p.status === 'ended' ? '' : p.myship
                 ? '<p class="ac_dw_via is-shop"><b>7-11 可直接下單</b>可以到賣貨便直接付款下單；想混搭口味、指定取貨日或自取，再加入私訊清單。</p>'

@@ -46,7 +46,24 @@ content:
             required: true
             options:
               values: [經典, 果香, 可可・堅果, 茶香]
-          - { name: price, label: 單價（只填數字）, type: number, description: 例如 70；留空＝訊息裡不顯示價格 }
+          - { name: price, label: 單價（只填數字）, type: number, description: 例如 70；留空＝顯示英式經典司康的價格文字 }
+          - { name: en, label: 英文名稱, type: string, description: 卡片上的小字，例如 Earl Grey }
+          - { name: summary, label: 一句話介紹（卡片上）, type: string, description: 沒填會顯示「每顆單獨包裝，冷凍保存、回烤即食。」 }
+          - { name: desc, label: 完整介紹, type: text, description: 空一行就是分段；沒填就用英式經典司康的介紹 }
+          - { name: featured, label: 放到首頁「招牌選品」, type: boolean }
+          - { name: instagram, label: IG 貼文代碼, type: string, description: 貼文網址 instagram.com/p/ 後面那串 }
+          - name: images
+            label: 照片（第一張是封面，建議正方形；沒照片會顯示口味色塊）
+            type: object
+            list: true
+            fields:
+              - name: src
+                label: 照片
+                type: image
+                required: true
+                description: jpg / png / webp 都可以，存檔後約 1～2 分鐘系統會自動處理成網站用的尺寸
+              - { name: width, type: number, hidden: true }
+              - { name: height, type: number, hidden: true }
       - name: products
         label: 商品列表（順序＝網站上的順序）
         type: object
@@ -72,11 +89,12 @@ content:
             required: true
             options:
               values:
-                - { name: scone, label: 經典司康 }
+                - { name: scone, label: 司康 }
+                - { name: swirl, label: 花捲司康 }
                 - { name: special, label: 厚片・夾心 }
                 - { name: limited, label: 季節限定 }
                 - { name: dessert, label: 甜點 }
-                - { name: pantry, label: 果醬・橙品 }
+                - { name: pantry, label: 果醬・其他 }
                 - { name: gift, label: 節慶禮盒 }
           - name: status
             label: 供應狀態
@@ -102,7 +120,7 @@ content:
             label: 規格選項（客人直接點選，會帶進私訊清單）
             type: object
             list: true
-            description: 例如 布蕾塔 三入／六入／十二入、果醬 香吉士／綜合莓果。沒有分規格就不用填。經典司康的口味請改「司康口味菜單」
+            description: 例如 布蕾塔 三入／六入／十二入、果醬 香吉士／綜合莓果。沒有分規格就不用填。英式經典司康的口味請改「司康口味菜單」
             fields:
               - { name: name, label: 選項名稱, type: string, required: true, description: 例如 三入、香吉士 250g }
               - { name: price, label: 價格（只填數字）, type: number, description: 例如 210；不知道或要報價就留空 }

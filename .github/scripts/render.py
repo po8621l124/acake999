@@ -66,10 +66,22 @@ def via(p):
             else '<span class="ac_via">需私訊預訂</span>')
 
 
+SCONE_ICON = ('<svg viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">'
+              '<path d="M8 34c0-13 10.7-22 24-22s24 9 24 22z"/><path d="M17 23c4-3 9.5-4.5 15-4.5S43 20 47 23"/><path d="M4 34h56"/></svg>')
+
+
+def art(p):
+    """沒照片的口味：色塊＋口味名稱＋司康線條"""
+    return (f'<div class="ac_flv_art is-g{p.get("gi", 0) % 4}"><b>{esc(p["name"])}</b>'
+            + (f'<i>{esc(p["en"])}</i>' if p.get('en') else '') + SCONE_ICON + '</div>')
+
+
 def card(p, sizes, el='li', extra=''):
     s = p.get('status', 'regular')
+    pic = img(p['images'][0], sizes, p.get('alt') or p['name']) if p.get('images') else art(p)
+    tg = f'<span class="ac_tag">{esc(p["group"])}</span>' if p.get('flavor') else tag(p)
     return (f'<{el} class="ac_prod{" is-ended" if s == "ended" else ""}" data-cat="{esc(p["category"])}" data-status="{esc(s)}"{extra}>'
-            f'<figure>{img(p["images"][0], sizes, p["name"])}{tag(p)}</figure>'
+            f'<figure>{pic}{tg}</figure>'
             f'<button class="ac_prod_open" type="button" data-prod="{esc(p["id"])}" aria-label="查看「{esc(p["name"])}」詳情"></button>'
             f'<div class="ac_prod_txt"><em>{esc(p["en"])}</em><h3>{esc(p["name"])}</h3><p>{esc(p.get("summary"))}</p>{via(p)}'
             f'<div class="ac_prod_foot">{price(p)}<button class="ac_add" type="button" data-add="{esc(p["id"])}" aria-label="加入私訊清單：{esc(p["name"])}">{PLUS}</button></div></div></{el}>')
@@ -80,11 +92,36 @@ def block(items, indent):
     return '\n' + ''.join(pad + i + '\n' for i in items) + pad[:-4] if items else ''
 
 
+def flavor_products():
+    """每個司康口味變成一張卡（id = flv-口味），加入清單時算在「英式經典司康」底下"""
+    base = next((p for p in P['products'] if p['id'] == 'classic'), None)
+    if not base:
+        return []
+    gi = {g: i for i, g in enumerate(dict.fromkeys(f['group'] for f in P['flavors']))}
+    out = []
+    for f in P['flavors']:
+        pr = f.get('price')
+        out.append({
+            'id': 'flv-' + f['name'], 'parent': 'classic', 'flavor': f['name'], 'group': f['group'], 'gi': gi[f['group']],
+            'name': f['name'], 'alt': f['name'] + '司康', 'en': f.get('en') or '', 'category': base['category'],
+            'status': 'regular', 'myship': base.get('myship'), 'featured': f.get('featured'),
+            'price': f'NT$ {pr:,.0f}' if isinstance(pr, (int, float)) and pr > 0 else price_text(base),
+            'summary': f.get('summary') or '每顆單獨包裝，冷凍保存、回烤即食。', 'desc': f.get('desc') or base.get('desc', ''),
+            'specs': [s for s in base.get('specs') or [] if s.get('name') != '口味'],
+            'instagram': f.get('instagram') or '', 'images': f.get('images') or [],
+        })
+    return out
+
+
+FLV = flavor_products()
+
+
 def data_json():
     """頁面 JS 用的精簡資料（抽屜、私訊小幫手）"""
-    keep = ('id', 'name', 'en', 'category', 'status', 'myship', 'summary', 'desc', 'specs', 'options', 'instagram', 'images')
+    keep = ('id', 'name', 'en', 'category', 'status', 'myship', 'summary', 'desc', 'specs', 'options', 'instagram', 'images',
+            'parent', 'flavor', 'group', 'gi')
     d = {'categories': P['categories'], 'flavors': P['flavors'],
-         'products': [dict({k: p.get(k) for k in keep}, price=price_text(p)) for p in P['products']]}
+         'products': [dict({k: p.get(k) for k in keep}, price=price_text(p)) for p in P['products'] + FLV]}
     return json.dumps(d, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
 
 
@@ -170,16 +207,27 @@ ld = {
         'image': 'https://po8621l124.github.io/acake999/image/acake/' + p['images'][0]['src'],
         'brand': {'@type': 'Brand', 'name': 'A. cake'}}} for i, p in enumerate(prods)]}
 
+# 商品頁：英式經典司康換成各口味的卡；首頁招牌選品：英式經典司康後面接有勾「招牌」的口味
+grid, home = [], []
+for p in prods:
+    if p['id'] == 'classic':
+        grid += FLV
+        home += [p] + [f for f in FLV if f.get('featured')]
+    else:
+        grid.append(p)
+        if p.get('featured'):
+            home.append(p)
+
 put('html/products.html', {
     'products:filter': ''.join(filters),
-    'products:count': str(len(prods)),
-    'products:grid': block([card(p, '(max-width: 576px) 50vw, (max-width: 1024px) 33vw, 25vw') for p in prods], 16),
+    'products:count': str(len(grid)),
+    'products:grid': block([card(p, '(max-width: 576px) 50vw, (max-width: 1024px) 33vw, 25vw') for p in grid], 16),
     'products:flavors': block(groups, 16),
     'products:data': data_json(),
     'products:ld': json.dumps(ld, ensure_ascii=False),
 })
 
-feat = [card(p, '(max-width: 768px) 70vw, 320px', 'article') for p in prods if p.get('featured')]
+feat = [card(p, '(max-width: 768px) 70vw, 320px', 'article') for p in home]
 put('html/index.html', {
     'products:featured': block(feat, 16),
     'products:data': data_json(),
