@@ -507,8 +507,17 @@ body:has(.ac_dw[open]){overflow: hidden;}
 
 /* 商品詳情 */
 .ac_dw_gal{position: relative;padding: 16px 16px 0;}
-.hs_box .ac_dw_gal > img{width: 100%;height: auto;aspect-ratio: 1 / 1;max-height: 54vh;max-height: 54dvh;object-fit: cover;border-radius: 22px;background: var(--color-bg2);transition: opacity .35s;}
-.ac_dw_gal > img.is-swap{opacity: 0;}
+.ac_dw_zoom{position: relative;display: block;width: 100%;padding: 0;border: 0;background: none;border-radius: 22px;cursor: zoom-in;}
+.ac_dw_zoom:focus-visible{outline: 3px solid var(--color-Main);outline-offset: 3px;}
+.hs_box .ac_dw_zoom > img{width: 100%;height: auto;aspect-ratio: 1 / 1;max-height: 54vh;max-height: 54dvh;object-fit: cover;border-radius: 22px;background: var(--color-bg2);transition: opacity .35s;}
+.ac_dw_zoom > img.is-swap{opacity: 0;}
+/* 右下角放大鏡 */
+.ac_dw_zoom > i{position: absolute;right: 14px;bottom: 14px;width: 40px;height: 40px;border-radius: 50%;background: rgba(255,251,243,.92);box-shadow: 0 6px 16px -8px rgba(var(--rgb_cocoa),.6);transition: transform .3s var(--ease);}
+.ac_dw_zoom > i::before{content: '';position: absolute;left: 11px;top: 11px;width: 13px;height: 13px;border: 2px solid var(--colorText);border-radius: 50%;}
+.ac_dw_zoom > i::after{content: '';position: absolute;left: 25px;top: 24px;width: 2px;height: 7px;background: var(--colorText);border-radius: 2px;transform: rotate(-45deg);}
+@media (hover: hover) { .ac_dw_zoom:hover > i{transform: scale(1.1);} }
+/* PhotoSwipe 換成品牌色 */
+.pswp{--pswp-bg: #2A1E18;--pswp-icon-color: #FFFBF3;--pswp-icon-color-secondary: #3A2A22;}
 .ac_dw_thumbs{display: flex;gap: 8px;padding: 12px clamp(18px, 4vw, 34px) 0;}
 .ac_dw_thumbs button{width: 60px;height: 60px;flex: none;padding: 0;border-radius: 14px;overflow: hidden;background: var(--color-bg2);border: 3px solid transparent !important;cursor: pointer;opacity: .55;transition: opacity .3s, border-color .3s;}
 .ac_dw_thumbs button[aria-current="true"]{opacity: 1;border-color: var(--color-Main) !important;}

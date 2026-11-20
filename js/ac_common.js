@@ -86,6 +86,18 @@
     };
     [].forEach.call(document.querySelectorAll('.hs_box h1, .hs_box h2, .hs_box h3'), window.acSegment);
 
+    /* 需要時才載入外掛（Leaflet、PhotoSwipe），同一支只載一次 */
+    var loaded = {};
+    window.acLoad = function (js, css) {
+        if (css && !document.querySelector('link[href="' + css + '"]')) {
+            var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = css; document.head.appendChild(l);
+        }
+        return loaded[js] || (loaded[js] = new Promise(function (ok, ng) {
+            var s = document.createElement('script'); s.src = js; s.onload = ok; s.onerror = function () { delete loaded[js]; ng(); };
+            document.head.appendChild(s);
+        }));
+    };
+
     /* 讀頁面內的 JSON 資料（去掉 render.py 的標記註解） */
     window.acJson = function (el) { return el.textContent.replace(/<!--\/?[\w:]+-->/g, ''); };
 
@@ -181,7 +193,7 @@
         setTimeout(function () { dw.classList.remove('is-closing'); dw.close(); }, 430);
     };
     function wireDrawer(dw) {
-        dw.addEventListener('cancel', function (e) { e.preventDefault(); window.acClose(dw); });
+        dw.addEventListener('cancel', function (e) { e.preventDefault(); if (!dw.querySelector('.pswp')) window.acClose(dw); });   /* 照片放大中按 Esc 只關放大 */
         dw.addEventListener('click', function (e) { if (e.target === dw) window.acClose(dw); });
         var x = dw.querySelector('.ac_dw_close');
         if (x) x.addEventListener('click', function () { window.acClose(dw); });
@@ -268,7 +280,7 @@
         '<div class="ac_dw_in">' +
             '<button class="ac_dw_close" type="button" aria-label="關閉">' + window.AC_ICONS.close + '</button>' +
             '<div class="ac_dw_body">' +
-                '<div class="ac_dw_gal"><img src="" alt="" width="600" height="600"></div>' +
+                '<div class="ac_dw_gal"><button class="ac_dw_zoom" type="button" aria-label="放大照片"><img src="" alt="" width="600" height="600"><i aria-hidden="true"></i></button></div>' +
                 '<div class="ac_dw_thumbs"></div>' +
                 '<div class="ac_dw_txt"></div>' +
             '</div>' +
@@ -277,10 +289,10 @@
     (document.querySelector('.hs_box') || document.body).appendChild(dw);
     wireDrawer(dw);
     var gImg = dw.querySelector('.ac_dw_gal img'), thumbs = dw.querySelector('.ac_dw_thumbs'), txt = dw.querySelector('.ac_dw_txt'), foot = dw.querySelector('.ac_dw_foot'), body = dw.querySelector('.ac_dw_body');
-    var curP = null, curQ = 1;   /* 7-11 有賣的商品，抽屜裡不放數量（數量在賣貨便選） */
+    var curP = null, curQ = 1, curI = 0;   /* 7-11 有賣的商品，抽屜裡不放數量（數量在賣貨便選） */
 
     function setImg(i) {
-        var im = curP.images[i];
+        var im = curP.images[i]; curI = i;
         var go = function () { gImg.src = window.acImg(im, 960); gImg.alt = curP.name; gImg.classList.remove('is-swap'); };
         if (reduce || !gImg.getAttribute('src')) go(); else { gImg.classList.add('is-swap'); setTimeout(go, 200); }
         [].forEach.call(thumbs.children, function (b, k) { b.setAttribute('aria-current', k === i ? 'true' : 'false'); });
@@ -337,6 +349,29 @@
     window.acOpenProduct = open;
     dw.addEventListener('close', function () {
         if (history.replaceState) { var u = new URL(location.href); u.searchParams.delete('p'); history.replaceState(null, '', u); }
+    });
+    /* 點主圖放大（PhotoSwipe，第一次點才載入）；左右滑看其他張，關掉時主圖停在最後看的那張 */
+    dw.querySelector('.ac_dw_zoom').addEventListener('click', function () {
+        var p = curP;
+        window.acLoad('../js/photoswipe.umd.min.js', '../css/photoswipe.css').then(function () {
+            if (curP !== p || !dw.open) return;
+            var ps = new window.PhotoSwipe({
+                dataSource: p.images.map(function (im) {
+                    return { src: IMG + im.src, width: im.width, height: im.height, alt: p.name, element: gImg, thumbCropped: true };
+                }),
+                index: curI,
+                appendToEl: dw,          /* 抽屜是 showModal 的最上層，放外面會被蓋住 */
+                bgOpacity: .92,
+                showHideAnimationType: reduce ? 'none' : 'zoom',
+                closeTitle: '關閉', zoomTitle: '縮放', arrowPrevTitle: '上一張', arrowNextTitle: '下一張',
+                errorMsg: '照片載入失敗'
+            });
+            ps.on('close', function () {
+                var i = ps.currIndex;
+                if (i !== curI) { curI = i; gImg.src = window.acImg(p.images[i], 960); [].forEach.call(thumbs.children, function (b, k) { b.setAttribute('aria-current', k === i ? 'true' : 'false'); }); }
+            });
+            ps.init();
+        });
     });
     thumbs.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) setImg([].indexOf.call(thumbs.children, b)); });
     txt.addEventListener('click', function (e) {
