@@ -45,7 +45,7 @@ content:
             type: select
             required: true
             options:
-              values: [經典, 果香, 可可・堅果, 茶香, 花捲]
+              values: [經典, 果香, 可可・堅果, 茶香]
           - { name: price, label: 單價（只填數字）, type: number, description: 例如 70；留空＝訊息裡不顯示價格 }
       - name: products
         label: 商品列表（順序＝網站上的順序）
