@@ -344,9 +344,10 @@
     /* 口味／規格膠囊：點一下加一份，數量顯示在膠囊上 */
     function chipsHtml() {
         var list = curP.id === 'classic' ? DATA.flavors.filter(function (f) { return !(f.images && f.images.length); }) : window.acOpts(curP);
+        var off = curP.status === 'ended';
         return list.map(function (f) {
             var q = window.acBag.qty(curP.id + '|' + f.name), pr = typeof f.price === 'number' && f.price > 0 ? window.acMoney(f.price) : '';
-            return '<button class="ac_chip' + (q ? ' is-on' : '') + '" type="button" data-flv="' + esc(f.name) + '"><span>' + esc(f.name) + (pr ? '<i>' + pr + '</i>' : '') + '</span><b>' + q + '</b></button>';
+            return '<button class="ac_chip' + (q ? ' is-on' : '') + '" type="button"' + (off ? ' disabled' : ' data-flv="' + esc(f.name) + '"') + '><span>' + esc(f.name) + (pr ? '<i>' + pr + '</i>' : '') + '</span><b>' + q + '</b></button>';
         }).join('');
     }
     function hasChips(p) { return p.id === 'classic' || window.acOpts(p).length > 0; }
@@ -387,7 +388,8 @@
                 : '<p class="ac_dw_via"><b>需私訊預訂</b>這款沒有上架賣貨便，請加入私訊清單，整理好後傳給 A娜 確認。</p>') +
             '<p class="ac_dw_desc">' + esc(p.desc) + '</p>' +
             (p.id === 'classic' ? '<div class="ac_dw_flv_t"><b>選口味加入私訊清單</b><p>點一下加一顆，可以混搭多種口味。想直接付款，請到 7-11 賣貨便選口味下單。</p><div class="ac_dw_flv">' + chipsHtml() + '</div></div>'
-                : hasChips(p) && p.status !== 'ended' ? '<div class="ac_dw_flv_t"><b>選規格加入私訊清單</b><p>點一下加一份，可以混搭不同規格。' + (p.myship ? '想直接付款，請到 7-11 賣貨便下單。' : '') + '</p><div class="ac_dw_flv">' + chipsHtml() + '</div></div>' : '') +
+                : hasChips(p) && p.status === 'ended' ? '<div class="ac_dw_flv_t is-off"><b>本檔規格</b><p>這一檔已經結束，暫時不能預訂。下一檔會在 IG 公告。</p><div class="ac_dw_flv">' + chipsHtml() + '</div></div>'
+                : hasChips(p) ? '<div class="ac_dw_flv_t"><b>選規格加入私訊清單</b><p>點一下加一份，可以混搭不同規格。' + (p.myship ? '想直接付款，請到 7-11 賣貨便下單。' : '') + '</p><div class="ac_dw_flv">' + chipsHtml() + '</div></div>' : '') +
             (specs ? '<dl class="ac_dw_spec">' + specs + '</dl>' : '') +
             '<div class="ac_dw_links">' + links + '</div>';
         if (window.acSegment) window.acSegment(txt.querySelector('h2'));

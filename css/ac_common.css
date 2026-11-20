@@ -559,6 +559,9 @@ body:has(.ac_dw[open]){overflow: hidden;}
 .hs_box .ac_chip b{font-family: var(--Fraufont);font-size: 12px;font-weight: 700;line-height: 1;color: var(--colorText);background: #fff;border-radius: 20px;padding: 3px 7px;display: none;}
 .ac_chip:hover{border-color: var(--color-Main) !important;}
 .ac_chip:active{transform: scale(.95);}
+.ac_chip:disabled{cursor: default;opacity: .55;border-style: dashed !important;}
+.ac_chip:disabled:hover{border-color: var(--color-line) !important;}
+.ac_chip:disabled:active{transform: none;}
 .ac_chip.is-on{background: var(--color-butter);border-color: var(--color-butter) !important;}
 .hs_box .ac_chip.is-on b{display: inline-block;}
 
