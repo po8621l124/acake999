@@ -18,7 +18,8 @@
 <style>
 /* ===== 404 ac404_ ===== */
 .ac404{min-height: 100vh;min-height: 100svh;display: flex;align-items: center;justify-content: center;padding: calc(var(--hd_h) + 40px) var(--pdx) 80px;background: var(--color-bg2);text-align: center;}
-.ac404_bg{width: 180px;height: 220px;margin: 0 auto 26px;border-radius: 999px 999px 24px 24px;border: 8px solid #fff !important;background: url(../image/acake/480/p_box.webp) center / cover no-repeat;transform: rotate(-4deg);}
+.ac404_bg{position: relative;width: 180px;height: 220px;margin: 0 auto 26px;border-radius: 999px 999px 24px 24px;border: 8px solid #fff !important;background: url(../image/acake/480/p_box.webp) center / cover no-repeat;transform: rotate(-4deg);}
+.ac404_bg::after{content: '';position: absolute;right: -62%;bottom: -10%;width: 78%;aspect-ratio: 1;background: url(../image/acake/deco/lava.webp) center / contain no-repeat;transform: rotate(16deg);filter: drop-shadow(0 12px 12px rgba(var(--rgb_cocoa),.28));}
 .ac404_in{max-width: 640px;}
 .hs_box .ac404_num{display: block;font-family: var(--Fraufont);font-weight: 700;font-size: clamp(5rem, 14vw, 10rem);line-height: .9;color: var(--color-Main);}
 .hs_box .ac404_en{display: block;font-family: var(--Cavfont);font-size: var(--f40);line-height: 1.2;color: var(--color-alt);margin-top: 6px;}

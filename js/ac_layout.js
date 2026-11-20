@@ -126,7 +126,7 @@
                 '<div class="ac_dw_body">' +
                     '<div class="ac_bag_head"><em>Message List</em><h2 id="ac_bag_h">私訊清單</h2><p>這不是購物車，網站不能結帳。清單會整理成一段訊息，傳到 IG 或 LINE，等 A娜 回覆確認數量、價格與取貨時間，才算訂好。</p></div>' +
                     '<ul class="ac_bag_list"></ul>' +
-                    '<div class="ac_bag_empty" hidden><p>清單還是空的</p><a class="ac_btn" href="products.html#menu"><span>去挑商品</span><i></i></a></div>' +
+                    '<div class="ac_bag_empty" hidden><img class="ac_empty_deco" src="../image/acake/deco/scone.webp" alt="" width="120" height="102" loading="lazy"><p>清單還是空的</p><a class="ac_btn" href="products.html#menu"><span>去挑商品</span><i></i></a></div>' +
                     '<div class="ac_bag_sum"><p>想直接付款下單？標示「7-11 可直接下單」的商品，可以到 <a href="' + SHOP + '" target="_blank" rel="noopener">7-11 賣貨便</a> 結帳，不必私訊。</p></div>' +
                 '</div>' +
                 '<div class="ac_dw_foot">' +
