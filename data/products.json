@@ -552,6 +552,20 @@
       "featured": true,
       "myship": true,
       "price": "NT$ 210 起",
+      "options": [
+        {
+          "name": "三入",
+          "price": 210
+        },
+        {
+          "name": "六入",
+          "price": 420
+        },
+        {
+          "name": "十二入",
+          "price": 840
+        }
+      ],
       "summary": "A. cake 經典甜點，絲滑順口、不甜不膩。",
       "desc": "布蕾塔內餡絲滑順口且不甜不膩，口感綿密細緻，充滿濃郁蛋奶香。不加一滴水，自然無添加，注入深邃的層次。",
       "specs": [
@@ -576,20 +590,6 @@
           "width": 1440,
           "height": 1920
         }
-      ],
-      "options": [
-        {
-          "name": "三入",
-          "price": 210
-        },
-        {
-          "name": "六入",
-          "price": 420
-        },
-        {
-          "name": "十二入",
-          "price": 840
-        }
       ]
     },
     {
@@ -601,6 +601,20 @@
       "featured": false,
       "myship": true,
       "price": "NT$ 295 起",
+      "options": [
+        {
+          "name": "香吉士",
+          "price": 210
+        },
+        {
+          "name": "綜合莓果",
+          "price": 210
+        },
+        {
+          "name": "桑椹",
+          "price": 210
+        }
+      ],
       "summary": "香吉士、綜合莓果、桑椹，最經典的司康吃法。",
       "desc": "自家熬煮的果醬，抹在溫熱的司康上，是最經典的英式吃法。桑椹果醬使用親自採收的桑果，數量有限。",
       "specs": [
@@ -614,17 +628,6 @@
           "src": "p_jam.webp",
           "width": 1996,
           "height": 2000
-        }
-      ],
-      "options": [
-        {
-          "name": "香吉士"
-        },
-        {
-          "name": "綜合莓果"
-        },
-        {
-          "name": "桑椹"
         }
       ]
     },
@@ -662,16 +665,6 @@
       "featured": false,
       "myship": true,
       "price": "NT$ 750（十入）",
-      "summary": "蜜漬橙片沾上巧克力，送禮自用都合適。",
-      "desc": "以蜜漬橙片沾裹巧克力，橙香的清新酸甜與可可的濃郁在口中交疊。",
-      "specs": [],
-      "images": [
-        {
-          "src": "p_orangechoc.webp",
-          "width": 1440,
-          "height": 1440
-        }
-      ],
       "options": [
         {
           "name": "十入",
@@ -680,6 +673,15 @@
         {
           "name": "一入",
           "price": 80
+        }
+      ],
+      "summary": "蜜漬橙片沾上巧克力，送禮自用都合適。",
+      "desc": "以蜜漬橙片沾裹巧克力，橙香的清新酸甜與可可的濃郁在口中交疊。",
+      "images": [
+        {
+          "src": "p_orangechoc.webp",
+          "width": 1440,
+          "height": 1440
         }
       ]
     },
