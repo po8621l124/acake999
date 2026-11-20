@@ -331,9 +331,9 @@
                             <label><input type="radio" name="pick" value="market"><b>市集現場預留</b><span>到攤位報名字取</span></label>
                             <label><input type="radio" name="pick" value="home"><b>宅配</b><span>運費、出貨日私訊確認</span></label>
                         </div>
-                        <div class="aco_sub" data-for="studio"><label class="aco_field"><span>希望取貨日期（選填）</span><input type="date" id="aco_date"></label><p class="aco_hint">司康接單後製作，建議預留 3～5 天。</p></div>
+                        <div class="aco_sub" data-for="studio"><label class="aco_field"><span>希望取貨日期（選填）</span><input type="date" id="aco_date"></label><p class="aco_hint">司康接單後製作，建議預留 3～5 天。</p><p class="aco_err" data-err="date" hidden></p></div>
                         <div class="aco_sub" data-for="market" hidden><label class="aco_field"><span>要去哪一場市集</span><select id="aco_market"><!--markets:options--><option value="11.20 臺南｜森之市｜2026 珈琲與花物語・第四回">11.20　臺南｜森之市｜2026 珈琲與花物語・第四回</option><option value="11.28 彰化｜森之市｜2026 香菜市集">11.28　彰化｜森之市｜2026 香菜市集</option><option value="12.04 臺北｜交換禮物主題市集">12.04　臺北｜交換禮物主題市集</option><option value="12.12 高雄｜聖誕主題市集">12.12　高雄｜聖誕主題市集</option><option value="12.19 臺南｜年末市集">12.19　臺南｜年末市集</option><!--/markets:options--></select></label></div>
-                        <div class="aco_sub" data-for="home" hidden><p class="aco_hint">宅配地址請在私訊中提供，運費與出貨日 A娜 會一起回覆。</p></div>
+                        <div class="aco_sub" data-for="home" hidden><label class="aco_field"><span>收件地址（選填，也可以之後私訊給 A娜）</span><input type="text" id="aco_addr" autocomplete="street-address" placeholder="縣市、區、路名門牌"></label><p class="aco_hint">運費與出貨日 A娜 會一起回覆。</p></div>
                     </fieldset>
 
                     <!-- 步驟 3：聯絡資料 -->
@@ -487,13 +487,25 @@
 
         /* ---------- 步驟 3：聯絡 ---------- */
         var nameI = $('#aco_name'), telI = $('#aco_tel'), noteI = $('#aco_note');
-        function telOk(v) { return /^09\d{8}$/.test(v.replace(/[\s-]/g, '')); }
+        /* 手機：去掉空白、橫線、括號，+886／886 開頭換成 0（手機自動填入常是 +886） */
+        function telNorm(v) { return v.replace(/[\s\-()]/g, '').replace(/^\+?886/, '0'); }
+        function telOk(v) { return /^09\d{8}$/.test(telNorm(v)); }
+        function telText(v) { var t = telNorm(v); return /^09\d{8}$/.test(t) ? t.slice(0, 4) + '-' + t.slice(4, 7) + '-' + t.slice(7) : v.trim(); }
+        var addrI = $('#aco_addr');
+        addrI.addEventListener('input', render);
+        dt.addEventListener('input', function () { $('[data-err="date"]').hidden = true; dt.classList.remove('is-bad'); });
         [nameI, telI].forEach(function (i) { i.addEventListener('input', function () { i.classList.remove('is-bad'); $('[data-err="contact"]').hidden = true; }); });
         [dt, mSel, nameI, telI, noteI].forEach(function (i) { i.addEventListener('input', render); i.addEventListener('change', render); });
 
         /* ---------- 檢查與切換步驟 ---------- */
         function check(n) {
             if (n === 1) { var ok = bag.count() > 0; $('[data-err="items"]').hidden = ok; return ok; }
+            if (n === 2 && pick() === 'studio' && dt.value && dt.value < dt.min) {
+                var m = dt.min.split('-'), e2 = $('[data-err="date"]');
+                e2.textContent = '司康接單後才製作，最快 ' + (+m[1]) + '/' + (+m[2]) + ' 可以取貨，請改選之後的日期（或留空讓 A娜 安排）。';
+                e2.hidden = false; dt.classList.add('is-bad'); dt.focus();
+                return false;
+            }
             if (n === 3) {
                 var nOk = !!nameI.value.trim(), tOk = telOk(telI.value);
                 nameI.classList.toggle('is-bad', !nOk); telI.classList.toggle('is-bad', !tOk);
@@ -546,6 +558,7 @@
             Object.keys(grp).forEach(function (n) {
                 var list = grp[n];
                 if (list.length === 1 && !list[0].opt) { L.push({ t: n, q: list[0].qty, a: amt(list[0]) }); return; }
+                list.sort(window.acByRank);
                 L.push({ t: n, q: list.reduce(function (a, b) { return a + b.qty; }, 0), sub: list.map(function (it) { return (it.opt || '不指定') + ' × ' + it.qty + amt(it); }) });
             });
             return L;
@@ -556,9 +569,11 @@
             bag.items().forEach(function (it) { var u = window.acUnit(it); if (u) t.known += u * it.qty; else t.missing++; });
             return t;
         }
+        /* 預估金額：老闆確認前先關閉（改成 true 就會在訊息最後與右側摘要顯示小計） */
+        var SHOW_TOTAL = false;
         function totalText() {
             var t = total();
-            if (!t.known) return '';
+            if (!SHOW_TOTAL || !t.known) return '';
             return t.missing ? '已標價品項小計：' + window.acMoney(t.known) + '（其他品項請 A娜 報價，未含運費）' : '預估金額：' + window.acMoney(t.known) + '（未含運費）';
         }
         function howText() {
@@ -576,7 +591,8 @@
             L.push('', '取貨方式：' + howText());
             if (pick() === 'market' && mSel.value) L.push('市集：' + mSel.value);
             if (nameI.value.trim()) L.push('訂購姓名：' + nameI.value.trim());
-            if (telI.value.trim()) L.push('手機：' + telI.value.trim());
+            if (telI.value.trim()) L.push('手機：' + telText(telI.value));
+            if (pick() === 'home' && addrI.value.trim()) L.push('宅配地址：' + addrI.value.trim());
             if (noteI.value.trim()) L.push('備註：' + noteI.value.trim());
             L.push('', '麻煩確認數量、價格與時間，謝謝！');
             return L.join('\n');
@@ -590,7 +606,7 @@
                 return '<li><span>' + esc(l.t) + (l.sub ? '<br><small>' + esc(l.sub.join('、')) + '</small>' : '') + '</span><b>× ' + l.q + '</b></li>';
             }).join('') : '<li class="is-empty">還沒有選品項</li>';
             var tt = total(), tEl = $('.aco_sum_total');
-            tEl.hidden = !tt.known;
+            tEl.hidden = !SHOW_TOTAL || !tt.known;
             if (tt.known) tEl.innerHTML = '<span>' + (tt.missing ? '已標價小計<small>其他品項 A娜 回覆報價</small>' : '預估金額<small>未含運費</small>') + '</span><b>' + window.acMoney(tt.known) + '</b>';
             var meta = '';
             if (reached >= 2) meta += '<dt>取貨</dt><dd>' + esc(howText()) + (pick() === 'market' && mSel.value ? '<br>' + esc(mSel.value) : '') + '</dd>';

@@ -177,8 +177,18 @@
         var u = window.acUnit(it), D = window.AC_DATA;
         if (u) return window.acMoney(u);
         var p = !it.opt && D && D.products.filter(function (x) { return x.id === it.id; })[0];
-        return (p && p.price) || '';
+        return p ? (p.price || '價格請私訊') : '';
     };
+    /* 同商品的口味／規格依商品設定的順序排（不是加入的先後） */
+    window.acOptRank = function (it) {
+        var D = window.AC_DATA, p = D && D.products.filter(function (x) { return x.id === it.id; })[0];
+        if (!p || !it.opt) return -1;
+        var list = p.id === 'classic' ? D.flavors : window.acOpts(p);
+        for (var i = 0; i < list.length; i++) if (list[i].name === it.opt) return i;
+        return 999;
+    };
+    function byRank(a, b) { return window.acOptRank(a) - window.acOptRank(b); }
+    window.acByRank = byRank;
 
     var KEY = 'ac_bag_v1', subs = [];
     function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
@@ -236,9 +246,14 @@
     window.acBagHtml = function (items) {
         var grp = [], at = {};
         items.forEach(function (it) {
-            if (!(it.id in at)) { at[it.id] = grp.length; grp.push({ name: it.name, img: it.img, rows: [] }); }
+            if (!(it.id in at)) {
+                var D = window.AC_DATA, p = D && D.products.filter(function (x) { return x.id === it.id; })[0];
+                at[it.id] = grp.length;
+                grp.push({ name: it.name, img: p && p.images && p.images[0] ? window.acImg(p.images[0], 480) : it.img, rows: [] });
+            }
             grp[at[it.id]].rows.push(it);
         });
+        grp.forEach(function (g) { g.rows.sort(byRank); });
         return grp.map(function (g) {
             var n = g.rows.reduce(function (a, b) { return a + b.qty; }, 0);
             return '<li class="ac_bgrp"><img src="' + esc(g.img) + '" alt="" width="56" height="56" loading="lazy"><div>' +
