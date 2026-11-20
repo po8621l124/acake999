@@ -668,6 +668,12 @@ body:has(.ac_dw[open]){overflow: hidden;}
 }
 @media (max-width: 576px) {
     .ac_banner_bg::after{left: -22%;width: 46%;}
+    /* 清單分組：小圖＋商品名一行當標題，口味／規格列用滿整張卡的寬度 */
+    .ac_bgrp{grid-template-columns: 38px minmax(0, 1fr);gap: 0 10px;align-items: center;padding: 10px 14px 6px;}
+    .ac_bgrp > img{width: 38px;height: 38px;border-radius: 10px;}
+    .ac_bgrp > div{display: contents;}
+    .ac_bgrp_rows{grid-column: 1 / -1;margin-top: 6px;border-top: 1px solid var(--color-line);}
+    .ac_bgrp_rows li{gap: 8px;min-height: 48px;}
     .ac_title.deco h2::after{width: 1.6em;top: -.4em;}
     .ac_empty_deco{width: 96px;}
     /* 頁尾選單：固定 3＋2 置中，避免最後一顆單獨掉到第二行 */
