@@ -43,8 +43,19 @@ def tag(p):
     return f'<span class="ac_tag{"" if s == "regular" else " is-" + s}">{STATUS[s]}</span>'
 
 
+def price_text(p):
+    """價格文字；沒填時用規格選項的最低價（NT$ 210 起）"""
+    if p.get('price'):
+        return p['price']
+    ps = [o['price'] for o in p.get('options') or [] if isinstance(o.get('price'), (int, float))]
+    if not ps:
+        return ''
+    return f'NT$ {min(ps):,.0f}' + (' 起' if len(ps) > 1 else '')
+
+
 def price(p):
-    return f'<span class="ac_price">{esc(p["price"])}</span>' if p.get('price') else '<span class="ac_price is-ask">價格請私訊</span>'
+    t = price_text(p)
+    return f'<span class="ac_price">{esc(t)}</span>' if t else '<span class="ac_price is-ask">價格請私訊</span>'
 
 
 def via(p):
@@ -71,9 +82,9 @@ def block(items, indent):
 
 def data_json():
     """頁面 JS 用的精簡資料（抽屜、私訊小幫手）"""
-    keep = ('id', 'name', 'en', 'category', 'status', 'myship', 'price', 'summary', 'desc', 'specs', 'instagram', 'images')
+    keep = ('id', 'name', 'en', 'category', 'status', 'myship', 'summary', 'desc', 'specs', 'options', 'instagram', 'images')
     d = {'categories': P['categories'], 'flavors': P['flavors'],
-         'products': [{k: p.get(k) for k in keep} for p in P['products']]}
+         'products': [dict({k: p.get(k) for k in keep}, price=price_text(p)) for p in P['products']]}
     return json.dumps(d, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
 
 

@@ -46,6 +46,7 @@ content:
             required: true
             options:
               values: [經典, 果香, 可可・堅果, 茶香, 花捲]
+          - { name: price, label: 單價（只填數字）, type: number, description: 例如 70；留空＝訊息裡不顯示價格 }
       - name: products
         label: 商品列表（順序＝網站上的順序）
         type: object
@@ -96,7 +97,15 @@ content:
           - name: price
             label: 價格文字
             type: string
-            description: 例如「NT$ 70 起」「NT$ 135」，空白會顯示「價格請私訊」
+            description: 例如「NT$ 70 起」「NT$ 135」。空白時：有填規格選項價格會自動顯示「NT$ 最低價 起」，否則顯示「價格請私訊」
+          - name: options
+            label: 規格選項（客人直接點選，會帶進私訊清單）
+            type: object
+            list: true
+            description: 例如 布蕾塔 三入／六入／十二入、果醬 香吉士／綜合莓果。沒有分規格就不用填。經典司康的口味請改「司康口味菜單」
+            fields:
+              - { name: name, label: 選項名稱, type: string, required: true, description: 例如 三入、香吉士 250g }
+              - { name: price, label: 價格（只填數字）, type: number, description: 例如 210；不知道或要報價就留空 }
           - name: summary
             label: 一句話介紹（卡片上）
             type: string

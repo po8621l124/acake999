@@ -157,6 +157,27 @@
     /* 原圖寬超過 1.15 倍才有縮圖（和 process_images.py 一致） */
     window.acImg = function (im, t) { return im && im.width > t * 1.15 ? IMG + t + '/' + im.src : IMG + (im ? im.src : ''); };
 
+    /* 價格：規格選項／司康口味的單價，或只有一個價格的商品（「NT$ 135」）。不知道就回傳 null */
+    window.acMoney = function (n) { return 'NT$ ' + Math.round(n).toLocaleString('en-US'); };
+    window.acOpts = function (p) { return (p && p.options || []).filter(function (o) { return o && o.name; }); };
+    function num(v) { return typeof v === 'number' && isFinite(v) && v > 0 ? v : null; }
+    window.acUnit = function (it) {
+        var D = window.AC_DATA, p = D && D.products.filter(function (x) { return x.id === it.id; })[0];
+        if (!p) return num(it.price);
+        if (it.opt) {
+            var src = p.id === 'classic' ? D.flavors : window.acOpts(p);
+            var o = src.filter(function (x) { return x.name === it.opt; })[0];
+            return o ? num(o.price) : null;
+        }
+        var m = /^NT\$\s*([\d,]+)$/.exec(String(p.price || '').trim());
+        return m ? +m[1].replace(/,/g, '') : null;
+    };
+    /* 清單裡的小字：規格＋單價 */
+    window.acOptLine = function (it) {
+        var u = window.acUnit(it);
+        return [it.opt, u ? window.acMoney(u) : ''].filter(Boolean).join('・');
+    };
+
     var KEY = 'ac_bag_v1', subs = [];
     function load() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
     function save(list) { try { localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) {} }
@@ -170,7 +191,7 @@
             var key = it.id + (it.opt ? '|' + it.opt : '');
             var cur = bag.filter(function (x) { return x.key === key; })[0];
             if (cur) cur.qty = Math.min(99, cur.qty + (n || 1));
-            else bag.push({ key: key, id: it.id, name: it.name, opt: it.opt || '', img: it.img || '', qty: n || 1 });
+            else bag.push({ key: key, id: it.id, name: it.name, opt: it.opt || '', img: it.img || '', price: num(it.price), qty: n || 1 });
             emit();
         },
         set: function (key, n) {
@@ -214,7 +235,7 @@
         var list = bagDw.querySelector('.ac_bag_list'), empty = bagDw.querySelector('.ac_bag_empty'), go = bagDw.querySelector('.ac_bag_go');
         window.acBag.on(function (items) {
             list.innerHTML = items.map(function (it) {
-                return '<li data-key="' + esc(it.key) + '"><img src="' + esc(it.img) + '" alt="" width="64" height="64" loading="lazy"><div><b>' + esc(it.name) + '</b>' + (it.opt ? '<small>' + esc(it.opt) + '</small>' : '') + '</div>' +
+                return '<li data-key="' + esc(it.key) + '"><img src="' + esc(it.img) + '" alt="" width="64" height="64" loading="lazy"><div><b>' + esc(it.name) + '</b>' + (window.acOptLine(it) ? '<small>' + esc(window.acOptLine(it)) + '</small>' : '') + '</div>' +
                     '<div class="ac_bag_r">' + qtyHtml(it.qty, 'sm') + '<button class="ac_bag_del" type="button">移除</button></div></li>';
             }).join('');
             empty.hidden = items.length > 0;
@@ -267,7 +288,9 @@
     window.AC_DATA = DATA;
 
     function addProduct(p, n, opt) {
-        window.acBag.add({ id: p.id, name: p.name, opt: opt, img: window.acImg(p.images[0], 480) }, n);
+        var it = { id: p.id, name: p.name, opt: opt, img: window.acImg(p.images[0], 480) };
+        it.price = window.acUnit(it);
+        window.acBag.add(it, n);
         bump();
         var first = window.acBag.count() === n;
         window.acToast(first ? '已加入私訊清單（不是購物車，最後整理成訊息傳給 A娜）' : '已加入：' + p.name + (opt ? '・' + opt : '') + ' × ' + n, true);
@@ -297,18 +320,23 @@
         if (reduce || !gImg.getAttribute('src')) go(); else { gImg.classList.add('is-swap'); setTimeout(go, 200); }
         [].forEach.call(thumbs.children, function (b, k) { b.setAttribute('aria-current', k === i ? 'true' : 'false'); });
     }
+    /* 口味／規格膠囊：點一下加一份，數量顯示在膠囊上 */
     function chipsHtml() {
-        return DATA.flavors.map(function (f) {
-            var q = window.acBag.qty(curP.id + '|' + f.name);
-            return '<button class="ac_chip' + (q ? ' is-on' : '') + '" type="button" data-flv="' + esc(f.name) + '"><span>' + esc(f.name) + '</span><b>' + q + '</b></button>';
+        var list = curP.id === 'classic' ? DATA.flavors : window.acOpts(curP);
+        return list.map(function (f) {
+            var q = window.acBag.qty(curP.id + '|' + f.name), pr = typeof f.price === 'number' && f.price > 0 ? window.acMoney(f.price) : '';
+            return '<button class="ac_chip' + (q ? ' is-on' : '') + '" type="button" data-flv="' + esc(f.name) + '"><span>' + esc(f.name) + (pr ? '<i>' + pr + '</i>' : '') + '</span><b>' + q + '</b></button>';
         }).join('');
     }
+    function hasChips(p) { return p.id === 'classic' || window.acOpts(p).length > 0; }
     function renderFoot() {
         if (curP.status === 'ended') {
             foot.innerHTML = '<a class="ac_btn" href="' + window.AC_LINKS.ig + '" target="_blank" rel="noopener"><span>本季已結束・追蹤 IG 等下一檔</span><i></i></a>';
-        } else if (curP.id === 'classic') {
+        } else if (hasChips(curP) && curP.myship) {
             foot.innerHTML = '<a class="ac_btn fill" href="' + window.AC_LINKS.shop + '" target="_blank" rel="noopener"><span>到 7-11 賣貨便下單</span><i></i></a>' +
                 '<button class="ac_btn ac_pdw_bag" type="button"><span>看私訊清單</span><i></i></button>';
+        } else if (hasChips(curP)) {
+            foot.innerHTML = '<button class="ac_btn fill ac_pdw_bag" type="button"><span>看私訊清單</span><i></i></button>';
         } else if (curP.myship) {
             foot.innerHTML = '<a class="ac_btn fill" href="' + window.AC_LINKS.shop + '" target="_blank" rel="noopener"><span>到 7-11 賣貨便下單</span><i></i></a>' +
                 '<button class="ac_btn ac_pdw_add" type="button"><span>加入私訊清單</span><i></i></button>';
@@ -337,7 +365,8 @@
                 ? '<p class="ac_dw_via is-shop"><b>7-11 可直接下單</b>可以到賣貨便直接付款下單；想混搭口味、指定取貨日或自取，再加入私訊清單。</p>'
                 : '<p class="ac_dw_via"><b>需私訊預訂</b>這款沒有上架賣貨便，請加入私訊清單，整理好後傳給 A娜 確認。</p>') +
             '<p class="ac_dw_desc">' + esc(p.desc) + '</p>' +
-            (p.id === 'classic' ? '<div class="ac_dw_flv_t"><b>選口味加入私訊清單</b><p>點一下加一顆，可以混搭多種口味。想直接付款，請到 7-11 賣貨便選口味下單。</p><div class="ac_dw_flv">' + chipsHtml() + '</div></div>' : '') +
+            (p.id === 'classic' ? '<div class="ac_dw_flv_t"><b>選口味加入私訊清單</b><p>點一下加一顆，可以混搭多種口味。想直接付款，請到 7-11 賣貨便選口味下單。</p><div class="ac_dw_flv">' + chipsHtml() + '</div></div>'
+                : hasChips(p) && p.status !== 'ended' ? '<div class="ac_dw_flv_t"><b>選規格加入私訊清單</b><p>點一下加一份，可以混搭不同規格。' + (p.myship ? '想直接付款，請到 7-11 賣貨便下單。' : '') + '</p><div class="ac_dw_flv">' + chipsHtml() + '</div></div>' : '') +
             (specs ? '<dl class="ac_dw_spec">' + specs + '</dl>' : '') +
             '<div class="ac_dw_links">' + links + '</div>';
         if (window.acSegment) window.acSegment(txt.querySelector('h2'));
@@ -386,7 +415,7 @@
     });
     /* 口味膠囊的數量跟清單同步 */
     window.acBag.on(function () {
-        if (!curP || curP.id !== 'classic') return;
+        if (!curP || !hasChips(curP)) return;
         [].forEach.call(txt.querySelectorAll('[data-flv]'), function (c) {
             var q = window.acBag.qty(curP.id + '|' + c.getAttribute('data-flv'));
             c.classList.toggle('is-on', q > 0); c.querySelector('b').textContent = q;
@@ -400,7 +429,7 @@
         var a = e.target.closest('[data-add]');
         if (a) {
             var p = byId[a.getAttribute('data-add')]; if (!p) return;
-            if (p.id === 'classic') { open(p.id); return; }   /* 經典司康要先選口味 */
+            if (hasChips(p)) { open(p.id); return; }   /* 有口味／規格的要先選 */
             addProduct(p, 1);
             a.classList.add('is-added'); setTimeout(function () { a.classList.remove('is-added'); }, 1600);
         }
