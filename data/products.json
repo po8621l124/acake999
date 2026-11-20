@@ -42,42 +42,50 @@
     {
       "name": "原味",
       "group": "經典",
-      "en": "Plain"
+      "en": "Plain",
+      "featured": false
     },
     {
       "name": "伯爵茶",
       "group": "經典",
-      "en": "Earl Grey"
+      "en": "Earl Grey",
+      "featured": false
     },
     {
       "name": "純粹蜂蜜",
       "group": "經典",
-      "en": "Honey"
+      "en": "Honey",
+      "featured": false
     },
     {
       "name": "蔓越莓",
       "group": "經典",
-      "en": "Cranberry"
+      "en": "Cranberry",
+      "featured": false
     },
     {
       "name": "藍莓",
       "group": "經典",
-      "en": "Blueberry"
+      "en": "Blueberry",
+      "featured": false
     },
     {
       "name": "蘭姆酒葡萄乾",
       "group": "經典",
-      "en": "Rum Raisin"
+      "en": "Rum Raisin",
+      "featured": false
     },
     {
       "name": "英式經典奶酥",
       "group": "經典",
-      "en": "Classic Crumble"
+      "en": "Classic Crumble",
+      "featured": false
     },
     {
       "name": "鹹乳酪",
       "group": "經典",
-      "en": "Savory Cheese"
+      "en": "Savory Cheese",
+      "featured": false
     },
     {
       "name": "蜜漬橙片",
@@ -85,6 +93,8 @@
       "en": "Candied Orange",
       "summary": "橙片低溫蜜漬八天，果香與微苦韻味融進奶香裡。",
       "desc": "香橙低溫蜜漬，鎖住果香與微苦韻味，與英式司康的奶香酥鬆完美交融。\n\n橙皮的清新果酸緩緩綻放，讓英式經典司康多了一份法式優雅與成熟風味。每一批蜜漬橙片都要經過八天的照顧，冬季才會正常供應。",
+      "featured": true,
+      "instagram": "DR11BtokToJ",
       "images": [
         {
           "src": "p_orange.webp",
@@ -96,34 +106,37 @@
           "width": 1440,
           "height": 1440
         }
-      ],
-      "instagram": "DR11BtokToJ",
-      "featured": true
+      ]
     },
     {
       "name": "草莓乳酪果餡",
       "group": "果香",
-      "en": "Strawberry Cream Cheese"
+      "en": "Strawberry Cream Cheese",
+      "featured": false
     },
     {
       "name": "綜合莓果奇亞籽乳酪",
       "group": "果香",
-      "en": "Mixed Berry Chia Cheese"
+      "en": "Mixed Berry Chia Cheese",
+      "featured": false
     },
     {
       "name": "桑椹",
       "group": "果香",
-      "en": "Mulberry"
+      "en": "Mulberry",
+      "featured": false
     },
     {
       "name": "英式奶酥蘋果派",
       "group": "果香",
-      "en": "Apple Crumble Pie"
+      "en": "Apple Crumble Pie",
+      "featured": false
     },
     {
       "name": "草莓花生無違和",
       "group": "果香",
-      "en": "Strawberry Peanut"
+      "en": "Strawberry Peanut",
+      "featured": false
     },
     {
       "name": "滿嘴巧克力",
@@ -131,6 +144,8 @@
       "en": "Double Chocolate",
       "summary": "冬天才有的濃郁可可，巧克力控的指定款。",
       "desc": "有冬天的感覺，才會安排滿嘴巧克力出場。可可的厚度一口接一口，是市集上許多朋友指定要預留的口味。",
+      "featured": false,
+      "instagram": "DTNX5_nEX8L",
       "images": [
         {
           "src": "p_choco.webp",
@@ -142,53 +157,61 @@
           "width": 1440,
           "height": 1440
         }
-      ],
-      "instagram": "DTNX5_nEX8L"
+      ]
     },
     {
       "name": "巧克力",
       "group": "可可・堅果",
-      "en": "Chocolate"
+      "en": "Chocolate",
+      "featured": false
     },
     {
       "name": "黑森林",
       "group": "可可・堅果",
-      "en": "Black Forest"
+      "en": "Black Forest",
+      "featured": false
     },
     {
       "name": "焦糖核桃",
       "group": "可可・堅果",
-      "en": "Caramel Walnut"
+      "en": "Caramel Walnut",
+      "featured": false
     },
     {
       "name": "海鹽栗子",
       "group": "可可・堅果",
-      "en": "Sea Salt Chestnut"
+      "en": "Sea Salt Chestnut",
+      "featured": false
     },
     {
       "name": "咖啡奶油乾酪杏仁脆片",
       "group": "可可・堅果",
-      "en": "Coffee Cream Cheese Almond"
+      "en": "Coffee Cream Cheese Almond",
+      "featured": false
     },
     {
       "name": "純粹抹茶",
       "group": "茶香",
-      "en": "Matcha"
+      "en": "Matcha",
+      "featured": false
     },
     {
       "name": "泰式奶茶",
       "group": "茶香",
-      "en": "Thai Milk Tea"
+      "en": "Thai Milk Tea",
+      "featured": false
     },
     {
       "name": "鐵觀音",
       "group": "茶香",
-      "en": "Tieguanyin Oolong"
+      "en": "Tieguanyin Oolong",
+      "featured": false
     },
     {
       "name": "蜜橙烏龍茶",
       "group": "茶香",
-      "en": "Orange Oolong"
+      "en": "Orange Oolong",
+      "featured": false
     }
   ],
   "products": [
@@ -278,6 +301,20 @@
       "featured": false,
       "myship": true,
       "price": "NT$ 70 起",
+      "options": [
+        {
+          "name": "榛果可可脆粒"
+        },
+        {
+          "name": "肉桂球球捲"
+        },
+        {
+          "name": "南瓜有機籽"
+        },
+        {
+          "name": "紫薯地瓜"
+        }
+      ],
       "summary": "捲紋層次帶出酥鬆與綿密濕潤，口味依季節輪替。",
       "desc": "把餡料一圈圈捲進司康裡，捲紋層次帶出酥鬆與綿密濕潤的口感。\n\n常見口味有榛果可可脆粒花捲、肉桂球球捲、南瓜有機籽花捲、紫薯地瓜花捲；年節期間另有伯爵茶球球捲限定口味。",
       "specs": [
@@ -297,20 +334,6 @@
           "src": "h_swirl.webp",
           "width": 1440,
           "height": 1440
-        }
-      ],
-      "options": [
-        {
-          "name": "榛果可可脆粒"
-        },
-        {
-          "name": "肉桂球球捲"
-        },
-        {
-          "name": "南瓜有機籽"
-        },
-        {
-          "name": "紫薯地瓜"
         }
       ]
     },
@@ -588,15 +611,15 @@
       "options": [
         {
           "name": "香吉士",
-          "price": 210
+          "price": 295
         },
         {
           "name": "綜合莓果",
-          "price": 210
+          "price": 295
         },
         {
           "name": "桑椹",
-          "price": 210
+          "price": 295
         }
       ],
       "summary": "香吉士、綜合莓果、桑椹，最經典的司康吃法。",
