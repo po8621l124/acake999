@@ -48,13 +48,6 @@
 /* map 市集地圖（Leaflet，捲到附近才載入） */
 .acm_map{padding: 0 var(--pdx) calc(var(--pdy) * 1.1);}
 .acm_map01{max-width: 1400px;margin: auto;}
-.acm_map01_head{display: flex;justify-content: space-between;align-items: flex-end;gap: 20px 40px;flex-wrap: wrap;margin-bottom: 32px;}
-.acm_legend{display: flex;flex-wrap: wrap;gap: 8px 18px;}
-.hs_box .acm_legend li{display: flex;align-items: center;gap: 8px;font-size: var(--f14);color: var(--colorText-sub);}
-.acm_legend i{width: 14px;height: 14px;border-radius: 50%;border: 2px solid #fff;box-shadow: 0 0 0 1px rgba(var(--rgb_cocoa),.25);}
-.acm_legend .is-up{background: var(--color-Main);}
-.acm_legend .is-past{background: var(--color-butter);}
-.acm_legend .is-home{background: var(--color-alt);border-radius: 4px;}
 .acm_mapbox{position: relative;height: clamp(420px, 52vw, 600px);border-radius: 40px;overflow: hidden;background: var(--color-bg2);border: 6px solid #fff;box-shadow: 0 18px 40px -30px rgba(var(--rgb_cocoa),.8);}
 .acm_mapbox .leaflet-container{height: 100%;background: var(--color-bg2);font-family: inherit;}
 .acm_mapbox .leaflet-tile-pane{filter: sepia(.22) saturate(.85) brightness(1.03);}
@@ -203,17 +196,6 @@
 
     <section class="acm_map" id="map">
         <div class="acm_map01">
-            <div class="acm_map01_head">
-                <div class="ac_title" data-animate-in="left">
-                    <div class="ac_en">Market Map</div>
-                    <h2>司康走過的地方</h2>
-                </div>
-                <ul class="acm_legend" data-animate-in="up">
-                    <li><i class="is-up"></i>即將出攤</li>
-                    <li><i class="is-past"></i>去過的城市</li>
-                    <li><i class="is-home"></i>大里工作室</li>
-                </ul>
-            </div>
             <div class="acm_mapbox" data-animate-in="up" role="region" aria-label="市集地圖，點城市看當地的市集"></div>
         </div>
     </section>
