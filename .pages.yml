@@ -53,7 +53,7 @@ content:
           - { name: featured, label: 放到首頁「招牌選品」, type: boolean }
           - { name: instagram, label: IG 貼文代碼, type: string, description: 貼文網址 instagram.com/p/ 後面那串 }
           - name: images
-            label: 照片（第一張是封面，建議正方形；沒照片會顯示口味色塊）
+            label: 照片（有照片就會在「司康」分類獨立成一張卡；沒照片的口味收在「英式經典司康」裡選）
             type: object
             list: true
             fields:

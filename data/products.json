@@ -1,5 +1,5 @@
 {
-  "_說明": "商品資料。新增商品：在 products 加一筆，順序＝網站上的順序。category 要對應 categories 的 id。status：regular＝常態供應、seasonal＝季節／活動限定、ended＝本季已結束（卡片會顯示「本季已結束」）。images 第一張是封面，存檔後系統會自動轉 webp、補 width／height。featured: true 會出現在首頁「招牌選品」。myship: true 表示 7-11 賣貨便有上架，網站會顯示「7-11 可直接下單」，否則顯示「需私訊預訂」。desc 裡的 \\n\\n 是分段。options＝客人可直接點選的規格（例如 三入／六入、果醬口味），每個可填價格，會帶進私訊清單與訊息；flavors 的 price 是該口味單價。 flavors 每個口味會在「司康」分類各自成為一張卡：有照片就用照片，沒照片顯示口味色塊；summary／desc 沒填就用英式經典司康的介紹。",
+  "_說明": "商品資料。新增商品：在 products 加一筆，順序＝網站上的順序。category 要對應 categories 的 id。status：regular＝常態供應、seasonal＝季節／活動限定、ended＝本季已結束（卡片會顯示「本季已結束」）。images 第一張是封面，存檔後系統會自動轉 webp、補 width／height。featured: true 會出現在首頁「招牌選品」。myship: true 表示 7-11 賣貨便有上架，網站會顯示「7-11 可直接下單」，否則顯示「需私訊預訂」。desc 裡的 \\n\\n 是分段。options＝客人可直接點選的規格（例如 三入／六入、果醬口味），每個可填價格，會帶進私訊清單與訊息；flavors 的 price 是該口味單價。 flavors 有照片的口味會在「司康」分類獨立成一張卡，沒照片的收在「英式經典司康」卡裡選；summary／desc 沒填會用預設介紹。",
   "order_url": "https://myship.7-11.com.tw/general/detail/GM2601282916278",
   "categories": [
     {
@@ -206,7 +206,7 @@
       "specs": [
         {
           "name": "口味",
-          "value": "原味、伯爵茶、蜜漬橙片、滿嘴巧克力等，完整口味見下方「口味菜單」"
+          "value": "原味、伯爵茶、純粹蜂蜜、焦糖核桃等，點下方膠囊選口味"
         },
         {
           "name": "包裝",

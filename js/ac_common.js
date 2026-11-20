@@ -302,11 +302,6 @@
     var STATUS = { regular: '常態供應', seasonal: '季節限定', ended: '本季已結束' };
     window.AC_DATA = DATA;
 
-    /* 沒照片的口味：色塊＋口味名稱（和 render.py 的 art() 同一組樣式） */
-    var SCONE = '<svg viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M8 34c0-13 10.7-22 24-22s24 9 24 22z"/><path d="M17 23c4-3 9.5-4.5 15-4.5S43 20 47 23"/><path d="M4 34h56"/></svg>';
-    window.acFlvArt = function (p) {
-        return '<div class="ac_flv_art is-g' + ((p.gi || 0) % 4) + '"><b>' + esc(p.name) + '</b>' + (p.en ? '<i>' + esc(p.en) + '</i>' : '') + SCONE + '</div>';
-    };
     function addProduct(p, n, opt) {
         /* 口味卡：算在英式經典司康底下，口味當規格 */
         if (p.parent && byId[p.parent]) {
@@ -329,7 +324,7 @@
         '<div class="ac_dw_in">' +
             '<button class="ac_dw_close" type="button" aria-label="關閉">' + window.AC_ICONS.close + '</button>' +
             '<div class="ac_dw_body">' +
-                '<div class="ac_dw_gal"><button class="ac_dw_zoom" type="button" aria-label="放大照片"><img src="" alt="" width="600" height="600"><i aria-hidden="true"></i></button><div class="ac_dw_art" hidden></div></div>' +
+                '<div class="ac_dw_gal"><button class="ac_dw_zoom" type="button" aria-label="放大照片"><img src="" alt="" width="600" height="600"><i aria-hidden="true"></i></button></div>' +
                 '<div class="ac_dw_thumbs"></div>' +
                 '<div class="ac_dw_txt"></div>' +
             '</div>' +
@@ -348,7 +343,7 @@
     }
     /* 口味／規格膠囊：點一下加一份，數量顯示在膠囊上 */
     function chipsHtml() {
-        var list = curP.id === 'classic' ? DATA.flavors : window.acOpts(curP);
+        var list = curP.id === 'classic' ? DATA.flavors.filter(function (f) { return !(f.images && f.images.length); }) : window.acOpts(curP);
         return list.map(function (f) {
             var q = window.acBag.qty(curP.id + '|' + f.name), pr = typeof f.price === 'number' && f.price > 0 ? window.acMoney(f.price) : '';
             return '<button class="ac_chip' + (q ? ' is-on' : '') + '" type="button" data-flv="' + esc(f.name) + '"><span>' + esc(f.name) + (pr ? '<i>' + pr + '</i>' : '') + '</span><b>' + q + '</b></button>';
@@ -375,15 +370,11 @@
         var p = byId[id]; if (!p) return;
         curP = p; curQ = 1;
         gImg.removeAttribute('src');
-        /* 沒照片：顯示口味色塊 */
-        var noPic = !p.images.length, artEl = dw.querySelector('.ac_dw_art');
-        artEl.hidden = !noPic; dw.querySelector('.ac_dw_zoom').hidden = noPic;
-        artEl.innerHTML = noPic ? window.acFlvArt(p) : '';
         thumbs.innerHTML = p.images.length > 1 ? p.images.map(function (im, k) {
             return '<button type="button" aria-label="第 ' + (k + 1) + ' 張照片"><img src="' + window.acImg(im, 480) + '" alt="" loading="lazy"></button>';
         }).join('') : '';
         thumbs.hidden = p.images.length < 2;
-        if (!noPic) setImg(0);
+        setImg(0);
         var specs = (p.specs || []).map(function (s) { return '<dt>' + esc(s.name) + '</dt><dd>' + esc(s.value) + '</dd>'; }).join('');
         var links = '<a href="' + window.AC_LINKS.shop + '" target="_blank" rel="noopener">' + window.AC_ICONS.bag + '7-11 賣貨便</a>' +
             (p.instagram ? '<a href="https://www.instagram.com/p/' + esc(p.instagram) + '/" target="_blank" rel="noopener">' + window.AC_ICONS.ig + '看 IG 貼文</a>' : '');
